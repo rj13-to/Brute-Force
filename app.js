@@ -11,10 +11,13 @@ mongoose.connect("mongodb://localhost/bookOcean",{ useNewUrlParser: true , useUn
 app.use(express.static("public"));
 // post routes ends
 app.get("/",function(req,res){
+    res.render("loghome.ejs");
+})
+app.get("/logedin",function(req,res){
     res.render("home.ejs");
 })
 app.get("*",function(req,res){
-    res.render("ushome.ejs");
+    res.render("loghome.ejs");
 })
 
 app.listen(3000,function(){
