@@ -416,6 +416,66 @@
         padding-bottom: 30px;
         padding-left: 10px;
       }
+
+
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 30px;
+        margin-top: 30px;
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: white;
+        margin: 20px auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 400px; /* Could be more or less, depending on screen size */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+        padding: 10px;
+      }
+
+      /* The Close Button (x) */
+      .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: red;
+        cursor: pointer;
+      }
+
+      /* Change styles for span and cancel button on extra small screens */
+      @media screen and (max-width: 300px) {
+        span.psw {
+           display: block;
+           float: none;
+        }
+        .cancelbtn {
+           width: 100%;
+        }
+      }
+
     </style>
     <title>Book Ocean</title>
 </head>
@@ -445,26 +505,11 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: red;">Wish List <i class="fa fa-heart" style="color:red"></i><span class="sr-only">(current)</span></a>
+             <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" >Sign  IN</button>
             </li>
+            <span style="margin-left:5px; margin-bottom: 2px;"></span>
             <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: grey;">For Sell <span class="sr-only">(current)</span></a>
-            </li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: grey;">
-                Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Basic</a>
-                <a class="dropdown-item" href="#">Address</a>
-                <a class="dropdown-item" href="#">Phone No</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log Out</a>
-              </div>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: grey;">Notifications <i class="fa fa-bell" ></i><span class="sr-only">(current)</span></a>
+              <button class="btn btn-primary" onclick="document.getElementById('id02').style.display='block'" >Sign Up</button>
             </li>
           </ul>
         </div>
@@ -1016,9 +1061,115 @@
 
 
 
+<div id="id01" class="modal">
+   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" >
+  <h2 style="text-align: center;">Log In</h2>
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <hr class="hrr3">
+  <div class="form-group">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      </div>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div class="clearfix">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger">Cancel</button>
+      <span style="width:200px"></span>
+      <button type="submit" class="btn btn-success" >Sign IN</button>
+  </div>
+</form>
+</div>
+
+
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" >
+  <h1 style="text-align: center;">Sign Up</h1>
+  <p style="margin-left: 5%">Please fill in this form to create an account.</p>
+  <hr class="hrr3">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+  </div>
+  <div class="form-group">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      </div>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div class="clearfix">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger">Cancel</button>
+      <span style="width:200px"></span>
+      <button type="submit" class="btn btn-success" >Sign UP</button>
+  </div>
+</div>
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script>
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+<script>
+var modal2 = document.getElementById('id02');
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+</script>
 
 
 
