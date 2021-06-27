@@ -68,6 +68,12 @@ app.get("/coreadd",function(req,res){
 app.get("/noncoreadd",function(req,res){
     res.render("noncoreadd.ejs");
 })
+app.get("/breviewadd",function(req,res){
+    res.render("breviewadd.ejs");
+})
+app.get("/creviewadd",function(req,res){
+    res.render("creviewadd.ejs");
+})
 app.get("*",function(req,res){
     res.render("home.ejs");
 })

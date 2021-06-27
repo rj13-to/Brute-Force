@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/6b383aaf03.js" crossorigin="anonymous"></script>
     <style type="text/css">
-      .cover{
+    /*body{
+      background-position: 0px 0px, 10px 10px;
+        background-size: 20px 20px;
+        background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
+    }*/
+    .cover{
         background     : white;
         padding-top    : 80px;
         padding-bottom : 80px;
@@ -23,18 +29,9 @@
         padding    : 5px;
         background : white;
       }
-
-
-
-      /*   footer seciton css */
-      .footer{
-        background-position: 0px 0px, 10px 10px;
-        background-size: 20px 20px;
-        background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
-      }
       .lowerf{
           color:  black;
-          padding-bottom: 20px;
+          margin-bottom: 20px;
           
       }
       .upperf{
@@ -78,7 +75,7 @@
         padding-left: 10px;
       }
     </style>
-    <title>Book Ocean</title>
+    <title>Brute Force</title>
 </head>
 <body >
 
@@ -87,13 +84,14 @@
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
    
-        <a class="navbar-brand" href="#" style="color: black;"><i class="fa fa-book" style="font-size:24px;color:red"></i> Book Ocean</a>
+        <a class="navbar-brand" href="#" style="color: black;"><i class="fas fa-bold" style="font-size:24px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:24px;color:blue">orce</i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
           <span class="navbar-toggler-icon"></span>
         </button>
 
               
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#" style="color: red;">Wish List <i class="fa fa-heart" style="color:red"></i><span class="sr-only">(current)</span></a>
@@ -121,116 +119,107 @@
         </div>
       </nav>
             <!-- nav bar ends--> 
-<div class="container">
 
-<div class="cover">
+            <div class="container">
 
-<div class="rules">
-    
-  <div class="rulesinner">
-
-      <h6 style="
-            text-align:  center;
-            font-weight: 600;
-            color: rgb(0, 102, 255);
-            margin-top: 20px;
-            ">
-              Welcome to share your experience about:
-            </h6>
-      <h3 style="
-            text-align: center;
-            font-weight: 700;
-            color : rgb(0, 0, 153);
-            font-family: Arial, Helvetica, sans-serif;
-            
-            ">
-           Core Interviews
-       </h3>  
-       <hr style="
-          border:none;
-          height: 20px;
-          width: 80%;
-          height: 50px;
-          margin-top: 0;
-          border-bottom: 1px solid rgb(0,0,153);
-          box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
-          margin: -50px auto 50px; 
-          ">
-
-
-         <!--<div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-          </div>-->
-
-    <div class="container">
-      <form>
-            
-
-              <div class="col-auto">
-                  <label class="sr-only" for="title">Title</label>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">Title</div>
-                    </div>
-                  <input type="text" class="form-control" id="title" placeholder="Enter Title" required >
-              </div>
-            </div>
-
-            <div class="col-auto form-row align-items-center">
-
-              <div class="col-md-6 my-1">
-                <label class="sr-only" for="exam">Name of Company</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Company</div>
-                  </div>
-                  <input type="text" class="form-control" id="exam" placeholder="Enter name of Company" required>
-                </div>
-              </div>
-
-              <div class="col-md-6 my-1">
-                <label class="sr-only" for="year">Year of Exam</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Year</div>
-                  </div>
-                  <input type="Number" class="form-control" id="year" placeholder="Enter year of exam" required >
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-auto">
-                <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add Description</h5>
-                <textarea id="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
-            </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
-            </div>
-      </form>
-
-         
-
-    </div> <!--container ends-->
-
-  </div><!-- rulesinner ends  -->
-
-</div><!-- rules ends -->
-
-</div> <!-- cover class ends-->
- 
-</div>  <!--contianer ends-->  
-
-<div class="addon">
-  
-
-
-</div>
-
-<br>
-<br>
-<br>
-
+                <div class="cover">
+                
+                <div class="rules">
+                    
+                  <div class="rulesinner">
+                
+                      <h6 style="
+                            text-align:  center;
+                            font-weight: 600;
+                            color: rgb(0, 102, 255);
+                            margin-top: 20px;
+                            ">
+                              Welcome to share your experience about:
+                            </h6>
+                      <h3 style="
+                            text-align: center;
+                            font-weight: 700;
+                            color : rgb(0, 0, 153);
+                            font-family: Arial, Helvetica, sans-serif;
+                            
+                            ">
+                           Core Interviews
+                       </h3>  
+                       <hr style="
+                          border:none;
+                          height: 20px;
+                          width: 80%;
+                          height: 50px;
+                          margin-top: 0;
+                          border-bottom: 1px solid rgb(0,0,153);
+                          box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
+                          margin: -50px auto 50px; 
+                          ">
+                
+                
+                         <!--<div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">Title</span>
+                          </div>-->
+                
+                    <div class="container">
+                      <form>
+                            
+                
+                              <div class="col-auto">
+                                  <label class="sr-only" for="title">Title</label>
+                                  <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text">Title</div>
+                                    </div>
+                                  <input type="text" class="form-control" id="title" placeholder="Enter Title" required >
+                              </div>
+                            </div>
+                
+                            <div class="col-auto form-row align-items-center">
+                
+                              <div class="col-md-6 my-1">
+                                <label class="sr-only" for="exam">Name of Company</label>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">Company</div>
+                                  </div>
+                                  <input type="text" class="form-control" id="exam" placeholder="Enter name of Company" required>
+                                </div>
+                              </div>
+                
+                              <div class="col-md-6 my-1">
+                                <label class="sr-only" for="year">Year of Exam</label>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">Year</div>
+                                  </div>
+                                  <input type="Number" class="form-control" id="year" placeholder="Enter year of exam" required >
+                                </div>
+                              </div>
+                
+                            </div>
+                
+                            <div class="col-auto">
+                                <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add Description</h5>
+                                <textarea id="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
+                            </div>
+                      </form>
+                
+                         
+                
+                    </div> <!--container ends-->
+                
+                  </div><!-- rulesinner ends  -->
+                
+                </div><!-- rules ends -->
+                
+                </div> <!-- cover class ends-->
+                 
+                </div>  <!--contianer ends-->  
+                
 
 <div class="footer">
   <div class="upperf">
@@ -268,8 +257,9 @@
 
     <div class="row" style="margin-top: 30px">
       <div class="col-xl-6 col-lg-12 " style="margin-bottom: 20px;" >
-        <h2 style="color: black ; margin-top: 10px; font-weight: 400; "> <i class="fa fa-book" style="font-size:50px;color:red;"></i> Book Ocean </h2>
-         <p style="width:80%">Book Ocean is a project created to remove middle-men from the book sell and to make more profit for seller and provide in cheaper price to buyers</p>
+        <h2 style="color: white ; margin-top: 10px; font-weight: 400;"> <i class="fas fa-bold" style="font-size:40px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:40px;color:blue;">orce</i></h2>
+        
+         <p style="width:80%">Book Ocean is a project for the engineering students, it contains section to sell used stationary, books and share/get review about books, interviews, entrance exams and coachings</p>
          <a href="#">
               <i class="fa fa-facebook-square" 
               style="
@@ -420,7 +410,6 @@
         ©2021 All Rights Reserved by Book Ocean
       </h6>
   </div>
-
 </div>
 
 
