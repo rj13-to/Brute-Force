@@ -133,7 +133,7 @@
             color: rgb(0, 102, 255);
             margin-top: 20px;
             ">
-              Welcome to share your views on any coaching:
+              Welcome to sell your stationary, Please fill the form below:
             </h6>
       <h3 style="
             text-align: center;
@@ -142,7 +142,7 @@
             font-family: Arial, Helvetica, sans-serif;
             
             ">
-            Coaching Review
+            Sell Used Stationary
        </h3>  
        <hr style="
           border:none;
@@ -165,23 +165,22 @@
             <div class="col-auto form-row align-items-center">
 
               <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                <label class="sr-only" for="name">Coaching Name</label>
+                <label class="sr-only" for="name">Stuff Name</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text">Coaching</div>
+                    <div class="input-group-text">Stuff</div>
                   </div>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name of Coaching" required>
+                  <input type="text" class="form-control" id="name" placeholder="Enter name of stuff" required>
                 </div>
               </div>
 
               <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                  <label class="form-check-label" for="inlineRadio1">Pre Graduaiton</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  <label class="form-check-label" for="inlineRadio2">Post Graduaiton</label>
+                <label class="sr-only" for="Price">Price</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Price</div>
+                  </div>
+                  <input type="Number" class="form-control" id="price" placeholder="Enter Price" required>
                 </div>
               </div>
 
@@ -198,7 +197,7 @@
              </h5>  
              <div class="col-auto form-row align-items-center">
 
-                  <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                  <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
                           <label class="sr-only" for="country">Country</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
@@ -210,7 +209,7 @@
                           </div>
                   </div>
 
-                  <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                  <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
                           <label class="sr-only" for="state">State</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
@@ -222,7 +221,7 @@
                           </div>
                   </div>
 
-                  <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                  <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
                           <label class="sr-only" for="district">District</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
@@ -233,22 +232,50 @@
                               </select>
                           </div>
                   </div>
-                  
-                  <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                    <label class="sr-only" for="name">City</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">City</div>
-                      </div>
-                      <input type="text" class="form-control" id="name" placeholder="Enter City" required>
-                    </div>
+              </div>
+              <h6 style="
+                font-weight: 400;
+                color: rgb(0, 102, 255);
+                padding-top: 10px;
+                padding-left: 16px;
+                ">
+                  Note: Phone number is not compulsory
+                </h6>
+            <div class="col-auto form-row align-items-center">
+
+              <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                <label class="sr-only" for="phone">Phone Number</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Phone  </div>
                   </div>
+                  <input type="Number" class="form-control" id="phone" placeholder="Enter Phone Number">
+                </div>
               </div>
 
-              <div class="col-auto">
-                <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add your review</h5>
-                <textarea id="des" required class="form-control" style="margin-bottom: 30px;" rows="7" required></textarea>
+              <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                <label class="sr-only" for="email">Email</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Email</div>
+                  </div>
+                  <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+                </div>
+              </div>
+
             </div>
+              <div class="col-auto form-row align-items-center">
+                      <div class="form-group">
+                      <label for="pic" style="font-weight: 500;
+                                              color : rgb(0, 0, 153);
+                                              font-family: Arial, Helvetica, sans-serif;
+                                              font-size: 20px;
+                                              margin-top: 10px;
+                                              ">Add pic:</label>
+                      <input type="file" class="form-control-file" id="pic" required>
+                    </div>
+              </div>
+                  
 
 
             <div class="col-auto">

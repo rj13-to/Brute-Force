@@ -51,10 +51,16 @@ var user   = mongoose.model('user',   uuser);
 // routes starts
 
 app.get("/",function(req,res){
-    res.render("ushome.ejs");
+    res.render("home.ejs");
 })
 app.get("/logedin",function(req,res){
     res.render("loghome.ejs");
+})
+app.get("/sellbook",function(req,res){
+    res.render("sellbook.ejs");
+})
+app.get("/sellstuff",function(req,res){
+    res.render("sellstuff.ejs");
 })
 app.get("/preengadd",function(req,res){
     res.render("preengadd.ejs");
@@ -71,8 +77,14 @@ app.get("/noncoreadd",function(req,res){
 app.get("/breviewadd",function(req,res){
     res.render("breviewadd.ejs");
 })
+app.get("/getbr",function(req,res){
+    res.render("getbr.ejs");
+})
 app.get("/creviewadd",function(req,res){
     res.render("creviewadd.ejs");
+})
+app.get("/getcr",function(req,res){
+    res.render("getcr.ejs");
 })
 app.get("*",function(req,res){
     res.render("home.ejs");
