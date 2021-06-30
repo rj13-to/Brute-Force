@@ -28,10 +28,36 @@ var coachings= mongoose.Schema({
     city     : String,
     review   : String,
 });
-
-var coaching   = mongoose.model('coaching', coachings);
+var pregras =mongoose.Schema({
+    title    : String,
+    exam     : String,
+    year     : Number,
+    des      : String,
+})
+var postgras =mongoose.Schema({
+    title    : String,
+    exam     : String,
+    year     : Number,
+    des      : String,
+})
+var noncints =mongoose.Schema({
+    title    : String,
+    company : String,
+    year     : Number,
+    des      : String,
+})
+var coreints =mongoose.Schema({
+    title    : String,
+    company  : String,
+    year     : Number,
+    des      : String,
+})
+var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
-
+var pregra      = mongoose.model('pregra' , pregras );
+var postgra     = mongoose.model('postgra',postgras);
+var noncint     = mongoose.model('noncint',noncints);
+var coreint     = mongoose.model('coreint',coreints);
 
 app.get("/",function(req,res){
     res.render("home.ejs");
@@ -45,18 +71,130 @@ app.get("/sellbook",function(req,res){
 app.get("/sellstuff",function(req,res){
     res.render("sellstuff.ejs");
 })
+
+// pre gradutaion exams section
+
 app.get("/preengadd",function(req,res){
     res.render("preengadd.ejs");
 })
+app.post("/preengadd",function(req,res){
+    pregra.create(req.body,function(err){
+        if(err){
+            console.log(err);
+            res.render("preengadd.ejs");
+        }
+        else res.render("loghome.ejs");
+    });
+})
+app.get("/preengshow",function(req,res){
+    pregra.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("preengshow",{ans:ans});
+        }
+    })
+})
+app.post("/preengshowadd",function(req,res){
+    pregra.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("preengshow",{ans:ans});
+        }
+    })
+})
+// post graduation exams section 
+
+
 app.get("/postengadd",function(req,res){
     res.render("postengadd.ejs");
 })
+app.post("/postengadd",function(req,res){
+    postgra.create(req.body,function(err){
+        if(err){
+            console.log(err);
+            res.render("postengadd.ejs");
+        }
+        else res.render("loghome.ejs");
+    });
+})
+app.get("/postengshow",function(req,res){
+    postgra.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("postengshow",{ans:ans});
+        }
+    })
+})
+app.post("/postengshowadd",function(req,res){
+    postgra.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("postengshow",{ans:ans});
+        }
+    })
+})
+// core graduation exams section 
+
 app.get("/coreadd",function(req,res){
     res.render("coreadd.ejs");
 })
+app.post("/coreadd",function(req,res){
+    coreint.create(req.body,function(err){
+        if(err){
+             console.log(err);
+             res.render("coreadd.ejs")
+        }
+        else  res.render("loghome.ejs")
+    });
+})
+app.get("/coreshow",function(req,res){
+    coreint.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("coreshow",{ans:ans});
+        }
+    })
+})
+app.post("/coreshowadd",function(req,res){
+    coreint.find(req.body,function(err,ans){
+        if(err){
+            console.log(err);
+        }
+        else res.render("coreshow",{ans,ans});
+    });
+})
+// noncore inteview section 
+
 app.get("/noncoreadd",function(req,res){
     res.render("noncoreadd.ejs");
 })
+app.post("/noncoreadd",function(req,res){
+    noncint.create(req.body,function(err){
+        if(err){
+             console.log(err);
+             res.render("noncoreadd.ejs")
+        }
+        else  res.render("loghome.ejs")
+    });
+})
+app.get("/noncoreshow",function(req,res){
+    noncint.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("noncoreshow",{ans:ans});
+        }
+    })
+})
+app.post("/noncoreshowadd",function(req,res){
+    noncint.find(req.body,function(err,ans){
+        if(err){
+            console.log(err);
+        }
+        else res.render("noncoreshow",{ans,ans});
+    });
+})
+// books review section 
+
 app.get("/breviewadd",function(req,res){
     res.render("breviewadd.ejs");
 })
@@ -113,8 +251,6 @@ app.post("/getcr",function(req,res){
         }
     }) 
 })
-
-
 app.get("*",function(req,res){
     res.render("home.ejs");
 })

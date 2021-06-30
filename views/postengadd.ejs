@@ -161,7 +161,7 @@
           </div>-->
 
     <div class="container">
-      <form>
+      <form method="POST" action="/postengadd">
             
 
               <div class="col-auto">
@@ -170,7 +170,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">Title</div>
                     </div>
-                  <input type="text" class="form-control" id="title" placeholder="Enter Title" required >
+                  <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required >
               </div>
             </div>
 
@@ -182,7 +182,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Exam</div>
                   </div>
-                  <input type="text" class="form-control" id="exam" placeholder="Enter name of exam" required>
+                  <input type="text" name="exam" class="form-control" id="exam" placeholder="Enter name of exam" required>
                 </div>
               </div>
 
@@ -192,7 +192,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Year</div>
                   </div>
-                  <input type="Number" class="form-control" id="year" placeholder="Enter year of exam" required >
+                  <input type="Number" name="year" class="form-control" id="year" placeholder="Enter year of exam" required >
                 </div>
               </div>
 
@@ -200,7 +200,7 @@
 
             <div class="col-auto">
                 <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add Description</h5>
-                <textarea id="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
+                <textarea id="des" name="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>

@@ -120,94 +120,94 @@
       </nav>
             <!-- nav bar ends--> 
 
-            <div class="container">
+<div class="container">
 
-                <div class="cover">
-                
-                <div class="rules">
-                    
-                  <div class="rulesinner">
-                
-                      <h6 style="
-                            text-align:  center;
-                            font-weight: 600;
-                            color: rgb(0, 102, 255);
-                            margin-top: 20px;
-                            ">
-                              Welcome to share your experience about:
-                            </h6>
-                      <h3 style="
-                            text-align: center;
-                            font-weight: 700;
-                            color : rgb(0, 0, 153);
-                            font-family: Arial, Helvetica, sans-serif;
-                            
-                            ">
-                           Core Interviews
-                       </h3>  
-                       <hr style="
-                          border:none;
-                          height: 20px;
-                          width: 80%;
-                          height: 50px;
-                          margin-top: 0;
-                          border-bottom: 1px solid rgb(0,0,153);
-                          box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
-                          margin: -50px auto 50px; 
-                          ">
-                
-                
-                         <!--<div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-                          </div>-->
-                
-                    <div class="container">
-                      <form>
-                            
-                
-                              <div class="col-auto">
-                                  <label class="sr-only" for="title">Title</label>
-                                  <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text">Title</div>
-                                    </div>
-                                  <input type="text" class="form-control" id="title" placeholder="Enter Title" required >
-                              </div>
-                            </div>
-                
-                            <div class="col-auto form-row align-items-center">
-                
-                              <div class="col-md-6 my-1">
-                                <label class="sr-only" for="exam">Name of Company</label>
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">Company</div>
-                                  </div>
-                                  <input type="text" class="form-control" id="exam" placeholder="Enter name of Company" required>
-                                </div>
-                              </div>
-                
-                              <div class="col-md-6 my-1">
-                                <label class="sr-only" for="year">Year of Exam</label>
-                                <div class="input-group">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">Year</div>
-                                  </div>
-                                  <input type="Number" class="form-control" id="year" placeholder="Enter year of exam" required >
-                                </div>
-                              </div>
-                
-                            </div>
-                
-                            <div class="col-auto">
-                                <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add Description</h5>
-                                <textarea id="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
-                            </div>
-                      </form>
-                
+<div class="cover">
+
+<div class="rules">
+
+<div class="rulesinner">
+
+<h6 style="
+      text-align:  center;
+      font-weight: 600;
+      color: rgb(0, 102, 255);
+      margin-top: 20px;
+      ">
+        Welcome to share your experience about:
+      </h6>
+<h3 style="
+      text-align: center;
+      font-weight: 700;
+      color : rgb(0, 0, 153);
+      font-family: Arial, Helvetica, sans-serif;
+      
+      ">
+      Core Interviews
+  </h3>  
+  <hr style="
+    border:none;
+    height: 20px;
+    width: 80%;
+    height: 50px;
+    margin-top: 0;
+    border-bottom: 1px solid rgb(0,0,153);
+    box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
+    margin: -50px auto 50px; 
+    ">
+
+
+    <!--<div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupPrepend">Title</span>
+    </div>-->
+
+<div class="container">
+<form method="POST" action="/coreadd">
+      
+
+        <div class="col-auto">
+            <label class="sr-only" for="title">Title</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Title</div>
+              </div>
+            <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required >
+        </div>
+      </div>
+
+      <div class="col-auto form-row align-items-center">
+
+        <div class="col-md-6 my-1">
+          <label class="sr-only" for="exam">Name of Company</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Company</div>
+            </div>
+            <input type="text" name="company" class="form-control" id="exam" placeholder="Enter name of Company" required>
+          </div>
+        </div>
+
+        <div class="col-md-6 my-1">
+          <label class="sr-only" for="year">Year of Exam</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Year</div>
+            </div>
+            <input type="Number" name="year" class="form-control" id="year" placeholder="Enter year of exam" required >
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-auto">
+          <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add Description</h5>
+          <textarea id="des" name="des" required class="form-control" style="margin-bottom: 30px;" rows="10" required></textarea>
+      </div>
+      <div class="col-auto">
+          <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
+      </div>
+</form>
+
                          
                 
                     </div> <!--container ends-->
