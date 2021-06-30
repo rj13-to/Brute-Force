@@ -6,49 +6,32 @@ var path=require("path");
 const { stringify } = require("querystring");
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
-mongoose.connect("mongodb://localhost/bookOcean",{ useNewUrlParser: true , useUnifiedTopology: true })
+mongoose.connect("mongodb://localhost/bruteForce",{ useNewUrlParser: true , useUnifiedTopology: true })
 .then(()=> console.log("data base connection succesfull!!! "))
 .catch((err)=> console.log(err));
 app.use(express.static("public"));
-// schema's start
-/* var bblog = mongoose.Schema({
-    user   : String,
-    topic  : String,
-    votes  : Number,
-    year   : Number,
-});
-var rreview = mongoose.Schema({
-    book    : String,
-    answer  : Boolean,
-    user    : String,
-    votes   : Number,
-    cat     : String, 
-});
-var bbooks = mongoose.Schema({
-    user     : String,
+
+var gcoachings= mongoose.Schema({
+    name     : String,
+    type     : String,
     country  : String,
     state    : String,
     district : String,
-    local    : String,
-    reviews  : String,
-    cat      : [ccat],
+    city     : String,
 });
-var uuser =  mongoose.Schema({
-    email    : String,
-    username : String,
-    password : String,
-    sellbook : [bbooks],
-    wishlist : [bbooks],
-    blog     : [bblog], 
+var coachings= mongoose.Schema({
+    name     : String,
+    type     : String,
+    country  : String,
+    state    : String,
+    district : String,
+    city     : String,
+    review   : String,
 });
 
-var cat    = mongoose.model('cat',    ccat);
-var blog   = mongoose.model('blog',   bblog);
-var review = mongoose.model('review', rreview);
-var book   = mongoose.model('book',   bbooks);
-var user   = mongoose.model('user',   uuser);
- */
-// routes starts
+var coaching   = mongoose.model('coaching', coachings);
+var gcoaching   = mongoose.model('gcoaching', gcoachings);
+
 
 app.get("/",function(req,res){
     res.render("home.ejs");
@@ -80,16 +63,61 @@ app.get("/breviewadd",function(req,res){
 app.get("/getbr",function(req,res){
     res.render("getbr.ejs");
 })
+
+// coaching review  secion 
 app.get("/creviewadd",function(req,res){
     res.render("creviewadd.ejs");
 })
+
+app.post("/creviewadd",function(req,res){
+    coaching.create(req.body,function(err){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render("loghome.ejs");
+        }
+    }) 
+})
+app.get("/creviewshow",function(req,res){
+    coaching.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("creviewshow",{ans:ans});
+        }
+    })
+})
+app.post("/creviewshowadd",function(req,res){
+    coaching.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("creviewshow",{ans:ans});
+        }
+    })
+})
+// get coaching reviews section 
+
+
 app.get("/getcr",function(req,res){
     res.render("getcr.ejs");
 })
+
+app.post("/getcr",function(req,res){
+    gcoaching.create(req.body,function(err){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(req.body);
+            res.render("loghome.ejs");
+        }
+    }) 
+})
+
+
 app.get("*",function(req,res){
     res.render("home.ejs");
 })
-
 app.listen(3000,function(){
     console.log("server started!!!");
 })
