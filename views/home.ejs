@@ -1491,17 +1491,18 @@
 
 <div id="id01" class="modal">
    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" >
+  <form class="modal-content" method="POST" action="/login">
   <h2 style="text-align: center;">Log In</h2>
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
   <hr class="hrr3">
+  
   <div class="form-group">
       <label for="validationCustomUsername">Username</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <input type="text" name="username" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>
@@ -1513,7 +1514,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-lock"></i></span>
         </div>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       </div>
   </div>
   <div class="form-group form-check">
@@ -1531,13 +1532,13 @@
 
 <div id="id02" class="modal">
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" >
+  <form class="modal-content" method="POST" action="/signup">
   <h1 style="text-align: center;">Sign Up</h1>
   <p style="margin-left: 5%">Please fill in this form to create an account.</p>
   <hr class="hrr3">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
   </div>
   <div class="form-group">
       <label for="validationCustomUsername">Username</label>
@@ -1545,7 +1546,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <input type="text" name="username" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>
@@ -1557,12 +1558,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-lock"></i></span>
         </div>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       </div>
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <div class="clearfix">
       <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger">Cancel</button>
