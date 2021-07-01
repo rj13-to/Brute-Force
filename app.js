@@ -1,15 +1,37 @@
-var express =require("express");
-var app=express();
-var mongoose=require("mongoose");
-var bodyParser =require("body-parser");
-var path=require("path");
-const { stringify } = require("querystring");
+var express               =   require("express");
+var app                   =   express();
+var mongoose              =   require("mongoose");
+var bodyParser            =   require("body-parser");
+var bcrypt                =   require("bcrypt");
+var passport              =   require('passport');
+var flash                 =   require('express-flash');
+var session               =   require('express-session');
+var path                  =   require("path");
+var LocalStrategy         =   require("passport-local");
+var passportLocalMongoose =   require("passport-local-mongoose")
+var User                  =   require("./models/user")
+const { stringify }       =   require("querystring");
+
+
+
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:true}));
-mongoose.connect("mongodb://localhost/bruteForce",{ useNewUrlParser: true , useUnifiedTopology: true })
+mongoose.connect("mongodb://localhost/bruteForce",{ useNewUrlParser: true , useUnifiedTopology: true,useFindAndModify : false,useCreateIndex : true })
 .then(()=> console.log("data base connection succesfull!!! "))
 .catch((err)=> console.log(err));
 app.use(express.static("public"));
+app.use(require("express-session")({
+    secret: "Rusty is the best and cutest dog in the world",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 var gcoachings= mongoose.Schema({
     name     : String,
@@ -52,6 +74,31 @@ var coreints =mongoose.Schema({
     year     : Number,
     des      : String,
 })
+var reviews = mongoose.Schema({
+    name     : String,
+    author   : String,
+    isbn     : Number,
+    type     : String,
+    category : String,
+    branch   : String,
+    des      : String,
+})
+var books = mongoose.Schema({
+    name     : String,
+    author   : String,
+    isbn     : Number,
+    price    : Number,
+    type     : String,
+    category : String,
+    branch   : String,
+    country  : String,
+    state    : String,
+    district : String,
+    phone    : Number,
+    email    : String,
+    pic      : String,
+})
+
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
 var pregra      = mongoose.model('pregra' , pregras );
@@ -59,31 +106,53 @@ var postgra     = mongoose.model('postgra',postgras);
 var noncint     = mongoose.model('noncint',noncints);
 var coreint     = mongoose.model('coreint',coreints);
 
+
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
-app.get("/logedin",function(req,res){
+
+app.post("/signup", function(req, res){
+    User.register(new User({username: req.body.username,email:req.body.email}), req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("home.ejs");
+        }
+        passport.authenticate("local")(req, res, function(){
+           res.redirect("/logedin");
+        });
+    });
+});
+
+
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/logedin",
+    failureRedirect: "/home"
+}) ,function(req, res){
+    console.log("hello");
+});
+
+app.get("/logedin",isLoggedIn ,function(req,res){
     res.render("loghome.ejs");
 })
-app.get("/sellbook",function(req,res){
+app.get("/sellbook",isLoggedIn,function(req,res){
     res.render("sellbook.ejs");
 })
-app.get("/sellstuff",function(req,res){
+app.get("/sellstuff",isLoggedIn,function(req,res){
     res.render("sellstuff.ejs");
 })
 
 // pre gradutaion exams section
 
-app.get("/preengadd",function(req,res){
+app.get("/preengadd",isLoggedIn,function(req,res){
     res.render("preengadd.ejs");
 })
 app.post("/preengadd",function(req,res){
     pregra.create(req.body,function(err){
         if(err){
             console.log(err);
-            res.render("preengadd.ejs");
+            res.render("/preengadd");
         }
-        else res.render("loghome.ejs");
+        else res.render("/loghome");
     });
 })
 app.get("/preengshow",function(req,res){
@@ -105,16 +174,16 @@ app.post("/preengshowadd",function(req,res){
 // post graduation exams section 
 
 
-app.get("/postengadd",function(req,res){
+app.get("/postengadd",isLoggedIn,function(req,res){
     res.render("postengadd.ejs");
 })
 app.post("/postengadd",function(req,res){
     postgra.create(req.body,function(err){
         if(err){
             console.log(err);
-            res.render("postengadd.ejs");
+            res.render("/postengadd");
         }
-        else res.render("loghome.ejs");
+        else res.render("/loghome");
     });
 })
 app.get("/postengshow",function(req,res){
@@ -135,16 +204,16 @@ app.post("/postengshowadd",function(req,res){
 })
 // core graduation exams section 
 
-app.get("/coreadd",function(req,res){
+app.get("/coreadd",isLoggedIn,function(req,res){
     res.render("coreadd.ejs");
 })
 app.post("/coreadd",function(req,res){
     coreint.create(req.body,function(err){
         if(err){
              console.log(err);
-             res.render("coreadd.ejs")
+             res.render("/coreadd")
         }
-        else  res.render("loghome.ejs")
+        else  res.render("/loghome")
     });
 })
 app.get("/coreshow",function(req,res){
@@ -165,16 +234,16 @@ app.post("/coreshowadd",function(req,res){
 })
 // noncore inteview section 
 
-app.get("/noncoreadd",function(req,res){
+app.get("/noncoreadd",isLoggedIn,function(req,res){
     res.render("noncoreadd.ejs");
 })
 app.post("/noncoreadd",function(req,res){
     noncint.create(req.body,function(err){
         if(err){
              console.log(err);
-             res.render("noncoreadd.ejs")
+             res.render("/noncoreadd")
         }
-        else  res.render("loghome.ejs")
+        else  res.render("/loghome")
     });
 })
 app.get("/noncoreshow",function(req,res){
@@ -203,7 +272,7 @@ app.get("/getbr",function(req,res){
 })
 
 // coaching review  secion 
-app.get("/creviewadd",function(req,res){
+app.get("/creviewadd",isLoggedIn,function(req,res){
     res.render("creviewadd.ejs");
 })
 
@@ -213,7 +282,7 @@ app.post("/creviewadd",function(req,res){
             console.log(err);
         }
         else{
-            res.render("loghome.ejs");
+            res.render("/loghome");
         }
     }) 
 })
@@ -251,9 +320,23 @@ app.post("/getcr",function(req,res){
         }
     }) 
 })
+
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/");
+});
+
 app.get("*",function(req,res){
-    res.render("home.ejs");
+    res.render("/");
 })
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
+
 app.listen(3000,function(){
     console.log("server started!!!");
 })
