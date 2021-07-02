@@ -10,11 +10,24 @@ var path                  =   require("path");
 var LocalStrategy         =   require("passport-local");
 var passportLocalMongoose =   require("passport-local-mongoose")
 var User                  =   require("./models/user")
+var multer                =   require("multer");
+var path                  =   require("path");
 const { stringify }       =   require("querystring");
 
 
 
 app.set('view engine','ejs');
+app.use(express.static("./pulic/uploads"));
+var Storage =multer.diskStorage({
+    destination:"./public/uploads",
+    filename:(req,file,cb)=>{
+        cb(null,file.filename+"_"+Date.now()+path.extname(file.originalname));
+    }
+});
+
+var upload=multer({
+    storage:Storage
+}).single('img');
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.connect("mongodb://localhost/bruteForce",{ useNewUrlParser: true , useUnifiedTopology: true,useFindAndModify : false,useCreateIndex : true })
 .then(()=> console.log("data base connection succesfull!!! "))
@@ -96,21 +109,30 @@ var books = mongoose.Schema({
     district : String,
     phone    : Number,
     email    : String,
-    pic      : String,
+    img      : String,
 })
-
+var stuffs = mongoose.Schema({
+    name     : String,
+    price    : Number,
+    country  : String,
+    state    : String,
+    district : String,
+    phone    : Number,
+    email    : String,
+    img      : String,
+})
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
 var pregra      = mongoose.model('pregra' , pregras );
 var postgra     = mongoose.model('postgra',postgras);
 var noncint     = mongoose.model('noncint',noncints);
 var coreint     = mongoose.model('coreint',coreints);
-
+var book        = mongoose.model('book',books);
+var stuff       = mongoose.model('stuff',stuffs);
 
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
-
 app.post("/signup", function(req, res){
     User.register(new User({username: req.body.username,email:req.body.email}), req.body.password, function(err, user){
         if(err){
@@ -134,9 +156,46 @@ app.post("/login", passport.authenticate("local", {
 app.get("/logedin",isLoggedIn ,function(req,res){
     res.render("loghome.ejs");
 })
+// sellbook routes 
 app.get("/sellbook",isLoggedIn,function(req,res){
     res.render("sellbook.ejs");
 })
+app.post("/sellbook",function(req,res){
+    var temp={
+        name     : String,
+        author   : String,
+        isbn     : Number,
+        price    : Number,
+        type     : String,
+        category : String,
+        branch   : String,
+        country  : String,
+        state    : String,
+        district : String,
+        phone    : Number,
+        email    : String,
+        img      : String,
+    }
+    temp.name     = req.body.name;
+    temp.author   = req.body.author;
+    temp.isbn     = req.body.isbn;
+    temp.price    = req.body.price;
+    temp.type     = req.body.type;
+    temp.category = req.body.category;
+    temp.branch   = req.body.branch;
+    temp.country  = req.body.country;
+    temp.state    = req.body.state;
+    temp.district = req.body.district;
+    temp.phone    = req.body.phone;
+    temp.email    = req.body.email;
+    temp.img      = req.file.filename;
+    book.create(temp,function(err){
+        if(err) res.render('/sellbook');
+        else res.render('/loghome');
+    });
+})
+
+// sellstuf routes
 app.get("/sellstuff",isLoggedIn,function(req,res){
     res.render("sellstuff.ejs");
 })
@@ -327,7 +386,7 @@ app.get("/logout", function(req, res){
 });
 
 app.get("*",function(req,res){
-    res.render("/");
+    res.render("home.ejs");
 })
 
 function isLoggedIn(req, res, next){
