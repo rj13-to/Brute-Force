@@ -11,7 +11,6 @@ var LocalStrategy         =   require("passport-local");
 var passportLocalMongoose =   require("passport-local-mongoose")
 var User                  =   require("./models/user")
 var multer                =   require("multer");
-var path                  =   require("path");
 const { stringify }       =   require("querystring");
 
 
@@ -19,7 +18,9 @@ const { stringify }       =   require("querystring");
 app.set('view engine','ejs');
 app.use(express.static("./pulic/uploads"));
 var Storage =multer.diskStorage({
-    destination:"./public/uploads",
+    destination: (req, file, cb) => {
+        cb(null, "./public/uploads"); 
+    },
     filename:(req,file,cb)=>{
         cb(null,file.filename+"_"+Date.now()+path.extname(file.originalname));
     }
@@ -28,6 +29,7 @@ var Storage =multer.diskStorage({
 var upload=multer({
     storage:Storage
 }).single('img');
+
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.connect("mongodb://localhost/bruteForce",{ useNewUrlParser: true , useUnifiedTopology: true,useFindAndModify : false,useCreateIndex : true })
 .then(()=> console.log("data base connection succesfull!!! "))
@@ -160,7 +162,7 @@ app.get("/logedin",isLoggedIn ,function(req,res){
 app.get("/sellbook",isLoggedIn,function(req,res){
     res.render("sellbook.ejs");
 })
-app.post("/sellbook",function(req,res){
+app.post("/sellbook",upload,function(req,res){
     var temp={
         name     : String,
         author   : String,
@@ -191,15 +193,63 @@ app.post("/sellbook",function(req,res){
     temp.img      = req.file.filename;
     book.create(temp,function(err){
         if(err) res.render('/sellbook');
-        else res.render('/loghome');
+        else res.render("loghome.ejs");
     });
 })
 
+app.get("/showbook",function(req,res){
+    book.find({},function(err,ans){
+        if(err) console.log(err);
+        else res.render("showbook.ejs",{ans:ans})
+    })
+})
+app.post("/searchbook",function(req,res){
+    book.find(req.body,function(err,ans){
+        if(err) console.log(err);
+        else res.render("showbook",{ans:ans});
+    })
+})
 // sellstuf routes
 app.get("/sellstuff",isLoggedIn,function(req,res){
     res.render("sellstuff.ejs");
 })
+app.post("/sellstuff",upload,function(req,res){
+    var temp={
+        name     : String,
+        price    : Number,
+        country  : String,
+        state    : String,
+        district : String,
+        phone    : Number,
+        email    : String,
+        img      : String,
+    }
+    temp.name     = req.body.name;
+    temp.price    = req.body.price;
+    temp.country  = req.body.country;
+    temp.state    = req.body.state;
+    temp.district = req.body.district;
+    temp.phone    = req.body.phone;
+    temp.email    = req.body.email;
+    temp.img      = req.file.filename;
+    stuff.create(temp,function(err){
+        if(err) res.render('/sellstuff');
+        else res.render("loghome.ejs");
+    });
+})
 
+app.get("/showstuff",function(req,res){
+    stuff.find({},function(err,ans){
+        if(err) console.log(err);
+        else res.render("showstuff.ejs",{ans:ans})
+    })
+})
+app.post("/searchstuff",function(req,res){
+    stuff.find(req.body,function(err,ans){
+        if(err) console.log(err);
+        else res.render("showstuff",{ans:ans});
+    })
+})
 // pre gradutaion exams section
 
 app.get("/preengadd",isLoggedIn,function(req,res){
@@ -211,7 +261,7 @@ app.post("/preengadd",function(req,res){
             console.log(err);
             res.render("/preengadd");
         }
-        else res.render("/loghome");
+        else res.render("/logedin");
     });
 })
 app.get("/preengshow",function(req,res){

@@ -161,7 +161,7 @@
           </div>-->
 
     <div class="container">
-      <form>
+      <form method="Post" action="/sellbook" enctype="multipart/form-data" > 
             <div class="col-auto form-row align-items-center">
 
               <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
@@ -170,7 +170,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Book</div>
                   </div>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name of book" required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name of book" required>
                 </div>
               </div>
 
@@ -180,7 +180,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Author</div>
                   </div>
-                  <input type="text" class="form-control" id="author" placeholder="Enter name of author" required >
+                  <input type="text" name="author" class="form-control" id="author" placeholder="Enter name of author" required >
                 </div>
               </div>
 
@@ -201,7 +201,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">ISBN  </div>
                   </div>
-                  <input type="Number" class="form-control" id="isbn" placeholder="Enter ISBN">
+                  <input type="Number" name="isbn" class="form-control" id="isbn" placeholder="Enter ISBN">
                 </div>
               </div>
 
@@ -211,7 +211,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Price</div>
                   </div>
-                  <input type="Number" class="form-control" id="price" placeholder="Enter Price" required>
+                  <input type="Number" name="price" class="form-control" id="price" placeholder="Enter Price" required>
                 </div>
               </div>
 
@@ -233,7 +233,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Type</div>
                                 </div>
-                                <select name="country" class="form-control" id="choice1" size="1" required>
+                                <select name="type" class="form-control" id="choice1" size="1" required>
                                         <option value="" selected="selected">Select Type of Book</option>
                                 </select>
                               </div>
@@ -245,7 +245,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Category</div>
                                 </div>
-                                <select name="state" class="form-control" id="choice2" size="1" required>
+                                <select name="category" class="form-control" id="choice2" size="1" required>
                                   <option value="" selected="selected">Please select Type first</option>
                                 </select>
                               </div>
@@ -257,7 +257,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Branch</div>
                                 </div>
-                                  <select name="district" class="form-control"  id="choice3" size="1" required>
+                                  <select name="branch" class="form-control"  id="choice3" size="1" required>
                                     <option value="" selected="selected" >Please select Catergory first</option>
                                   </select>
                               </div>
@@ -326,7 +326,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Phone  </div>
                   </div>
-                  <input type="Number" class="form-control" id="phone" placeholder="Enter Phone Number">
+                  <input type="Number" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number">
                 </div>
               </div>
 
@@ -336,7 +336,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Email</div>
                   </div>
-                  <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+                  <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
                 </div>
               </div>
 
@@ -349,7 +349,7 @@
                                               font-size: 20px;
                                               margin-top: 10px;
                                               ">Add front side pic:</label>
-                      <input type="file" class="form-control-file" id="pic" required>
+                      <input type="file" name="img" class="form-control-file" id="pic" required>
                     </div>
               </div>
                   
