@@ -76,7 +76,7 @@ var postgras =mongoose.Schema({
     exam     : String,
     year     : Number,
     des      : String,
-})
+}) 
 var noncints =mongoose.Schema({
     title    : String,
     company : String,
@@ -123,6 +123,18 @@ var stuffs = mongoose.Schema({
     email    : String,
     img      : String,
 })
+
+var byYou = mongoose.Schema({
+    your     : String, 
+    book     : [books],
+    stuff    : [stuffs],
+    review   : [reviews],
+    corints  : [coreints],
+    noncint  : [noncints],
+    postgra  : [postgras],
+    pregra   : [pregras],
+    coaching : [coachings],
+})
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
 var pregra      = mongoose.model('pregra' , pregras );
@@ -131,7 +143,8 @@ var noncint     = mongoose.model('noncint',noncints);
 var coreint     = mongoose.model('coreint',coreints);
 var book        = mongoose.model('book',books);
 var stuff       = mongoose.model('stuff',stuffs);
-
+var you         = mongoose.model('you',byYou);
+var uname =  String;
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
@@ -142,7 +155,22 @@ app.post("/signup", function(req, res){
             return res.render("home.ejs");
         }
         passport.authenticate("local")(req, res, function(){
-           res.redirect("/logedin");
+            var tempin ={
+                your     : String, 
+                book     : [books],
+                stuff    : [stuffs],
+                review   : [reviews],
+                corints  : [coreints],
+                noncint  : [noncints],
+                postgra  : [postgras],
+                pregra   : [pregras],
+                coaching : [coachings],
+            }
+            tempin.your=req.user.username;
+            you.create(tempin,function(err){
+                if(err) res.redirect("/");
+                else  res.redirect("/logedin");
+            })
         });
     });
 });
@@ -152,10 +180,9 @@ app.post("/login", passport.authenticate("local", {
     successRedirect: "/logedin",
     failureRedirect: "/home"
 }) ,function(req, res){
-    console.log("hello");
 });
 
-app.get("/logedin",isLoggedIn ,function(req,res){
+app.get("/logedin",isLoggedIn ,function(req,res){  
     res.render("loghome.ejs");
 })
 // sellbook routes 
@@ -192,8 +219,28 @@ app.post("/sellbook",upload,function(req,res){
     temp.email    = req.body.email;
     temp.img      = req.file.filename;
     book.create(temp,function(err){
-        if(err) res.render('/sellbook');
-        else res.render("loghome.ejs");
+        if(err) {
+            res.render('/sellbook');
+        }
+        else{
+            var tempin ={
+                your     : String, 
+                book     : [books],
+                stuff    : [stuffs],
+                review   : [reviews],
+                corints  : [coreints],
+                noncint  : [noncints],
+                postgra  : [postgras],
+                pregra   : [pregras],
+                coaching : [coachings],
+            };
+            tempin.book=temp;
+            tempin.your="check";
+            you.create(tempin,function(err){
+                if(err) console.log(err);
+                else res.redirect('/logedin');
+            })
+        } 
     });
 })
 
@@ -209,11 +256,15 @@ app.post("/searchbook",function(req,res){
         else res.render("showbook",{ans:ans});
     })
 })
+app.delete("/deletebook",function(req,res){
+    console.log("delted !!!");
+})
 // sellstuf routes
 app.get("/sellstuff",isLoggedIn,function(req,res){
     res.render("sellstuff.ejs");
 })
 app.post("/sellstuff",upload,function(req,res){
+
     var temp={
         name     : String,
         price    : Number,
@@ -234,7 +285,7 @@ app.post("/sellstuff",upload,function(req,res){
     temp.img      = req.file.filename;
     stuff.create(temp,function(err){
         if(err) res.render('/sellstuff');
-        else res.render("loghome.ejs");
+        else res.redirect("/logedin");
     });
 })
 
@@ -261,7 +312,24 @@ app.post("/preengadd",function(req,res){
             console.log(err);
             res.render("/preengadd");
         }
-        else res.render("/logedin");
+        else {
+            you.findOne({your:req.body.user.username},function(err,arr){
+                if(err) console.log(err);
+                else{  
+                    arr.pregra.push(req.body);
+                    res.redirect("/logedin");
+                }
+            })
+        }
+            /*you.findOne({your:query}
+                      arr.pregra.create(req.body,function(err){
+                        if(err){
+                            console.log(err);
+                        }
+                        else res.redirect("/logedin");
+                    })
+                }
+            })*/
     });
 })
 app.get("/preengshow",function(req,res){
@@ -292,7 +360,7 @@ app.post("/postengadd",function(req,res){
             console.log(err);
             res.render("/postengadd");
         }
-        else res.render("/loghome");
+        else res.redirect("/logedin");
     });
 })
 app.get("/postengshow",function(req,res){
@@ -322,7 +390,7 @@ app.post("/coreadd",function(req,res){
              console.log(err);
              res.render("/coreadd")
         }
-        else  res.render("/loghome")
+        else  res.redirect("/logedin")
     });
 })
 app.get("/coreshow",function(req,res){
@@ -352,7 +420,7 @@ app.post("/noncoreadd",function(req,res){
              console.log(err);
              res.render("/noncoreadd")
         }
-        else  res.render("/loghome")
+        else  res.redirect("/logedin")
     });
 })
 app.get("/noncoreshow",function(req,res){
@@ -391,7 +459,7 @@ app.post("/creviewadd",function(req,res){
             console.log(err);
         }
         else{
-            res.render("/loghome");
+            res.redirect("/logedin ");
         }
     }) 
 })
@@ -425,7 +493,7 @@ app.post("/getcr",function(req,res){
         }
         else{
             console.log(req.body);
-            res.render("loghome.ejs");
+            res.redirect("/logedin");
         }
     }) 
 })
@@ -436,7 +504,7 @@ app.get("/logout", function(req, res){
 });
 
 app.get("*",function(req,res){
-    res.render("home.ejs");
+    res.redirect("/");
 })
 
 function isLoggedIn(req, res, next){
