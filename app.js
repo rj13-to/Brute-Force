@@ -49,6 +49,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 var gcoachings= mongoose.Schema({
+    username : String,
     name     : String,
     type     : String,
     country  : String,
@@ -57,6 +58,7 @@ var gcoachings= mongoose.Schema({
     city     : String,
 });
 var coachings= mongoose.Schema({
+    username : String,
     name     : String,
     type     : String,
     country  : String,
@@ -66,30 +68,35 @@ var coachings= mongoose.Schema({
     review   : String,
 });
 var pregras =mongoose.Schema({
+    username : String,
     title    : String,
     exam     : String,
     year     : Number,
     des      : String,
 })
 var postgras =mongoose.Schema({
+    username : String,
     title    : String,
     exam     : String,
     year     : Number,
     des      : String,
 }) 
 var noncints =mongoose.Schema({
+    username : String,
     title    : String,
     company : String,
     year     : Number,
     des      : String,
 })
 var coreints =mongoose.Schema({
+    username : String,
     title    : String,
     company  : String,
     year     : Number,
     des      : String,
 })
 var reviews = mongoose.Schema({
+    username : String,
     name     : String,
     author   : String,
     isbn     : Number,
@@ -99,6 +106,7 @@ var reviews = mongoose.Schema({
     des      : String,
 })
 var books = mongoose.Schema({
+    username : String,
     name     : String,
     author   : String,
     isbn     : Number,
@@ -114,6 +122,7 @@ var books = mongoose.Schema({
     img      : String,
 })
 var stuffs = mongoose.Schema({
+    username : String,
     name     : String,
     price    : Number,
     country  : String,
@@ -124,17 +133,6 @@ var stuffs = mongoose.Schema({
     img      : String,
 })
 
-var byYou = mongoose.Schema({
-    your     : String, 
-    book     : [books],
-    stuff    : [stuffs],
-    review   : [reviews],
-    corints  : [coreints],
-    noncint  : [noncints],
-    postgra  : [postgras],
-    pregra   : [pregras],
-    coaching : [coachings],
-})
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
 var pregra      = mongoose.model('pregra' , pregras );
@@ -143,8 +141,7 @@ var noncint     = mongoose.model('noncint',noncints);
 var coreint     = mongoose.model('coreint',coreints);
 var book        = mongoose.model('book',books);
 var stuff       = mongoose.model('stuff',stuffs);
-var you         = mongoose.model('you',byYou);
-var uname =  String;
+
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
@@ -155,22 +152,7 @@ app.post("/signup", function(req, res){
             return res.render("home.ejs");
         }
         passport.authenticate("local")(req, res, function(){
-            var tempin ={
-                your     : String, 
-                book     : [books],
-                stuff    : [stuffs],
-                review   : [reviews],
-                corints  : [coreints],
-                noncint  : [noncints],
-                postgra  : [postgras],
-                pregra   : [pregras],
-                coaching : [coachings],
-            }
-            tempin.your=req.user.username;
-            you.create(tempin,function(err){
-                if(err) res.redirect("/");
-                else  res.redirect("/logedin");
-            })
+            res.redirect("/logedin")
         });
     });
 });
@@ -181,6 +163,11 @@ app.post("/login", passport.authenticate("local", {
     failureRedirect: "/home"
 }) ,function(req, res){
 });
+// profile 
+
+app.get("/profile",isLoggedIn,function(req,res){
+    res.render("profile.ejs");
+})
 
 app.get("/logedin",isLoggedIn ,function(req,res){  
     res.render("loghome.ejs");
@@ -191,6 +178,7 @@ app.get("/sellbook",isLoggedIn,function(req,res){
 })
 app.post("/sellbook",upload,function(req,res){
     var temp={
+        username : String,
         name     : String,
         author   : String,
         isbn     : Number,
@@ -205,6 +193,7 @@ app.post("/sellbook",upload,function(req,res){
         email    : String,
         img      : String,
     }
+    temp.username = req.user.username;
     temp.name     = req.body.name;
     temp.author   = req.body.author;
     temp.isbn     = req.body.isbn;
@@ -223,23 +212,7 @@ app.post("/sellbook",upload,function(req,res){
             res.render('/sellbook');
         }
         else{
-            var tempin ={
-                your     : String, 
-                book     : [books],
-                stuff    : [stuffs],
-                review   : [reviews],
-                corints  : [coreints],
-                noncint  : [noncints],
-                postgra  : [postgras],
-                pregra   : [pregras],
-                coaching : [coachings],
-            };
-            tempin.book=temp;
-            tempin.your="check";
-            you.create(tempin,function(err){
-                if(err) console.log(err);
-                else res.redirect('/logedin');
-            })
+            res.redirect('/logedin')
         } 
     });
 })
@@ -264,8 +237,8 @@ app.get("/sellstuff",isLoggedIn,function(req,res){
     res.render("sellstuff.ejs");
 })
 app.post("/sellstuff",upload,function(req,res){
-
     var temp={
+        username : String,
         name     : String,
         price    : Number,
         country  : String,
@@ -275,6 +248,7 @@ app.post("/sellstuff",upload,function(req,res){
         email    : String,
         img      : String,
     }
+    temp.username = req.user.username;
     temp.name     = req.body.name;
     temp.price    = req.body.price;
     temp.country  = req.body.country;
@@ -302,34 +276,30 @@ app.post("/searchstuff",function(req,res){
     })
 })
 // pre gradutaion exams section
-
 app.get("/preengadd",isLoggedIn,function(req,res){
     res.render("preengadd.ejs");
 })
 app.post("/preengadd",function(req,res){
-    pregra.create(req.body,function(err){
+    var temp = {
+        username : String,
+        title    : String,
+        exam     : String,
+        year     : Number,
+        des      : String,
+    }
+    temp.username=req.user.username;
+    temp.title=req.body.title;
+    temp.exam= req.body.exam;
+    temp.year=req.body.year;
+    temp.des=req.body.des;
+    pregra.create(temp,function(err){
         if(err){
             console.log(err);
             res.render("/preengadd");
         }
         else {
-            you.findOne({your:req.body.user.username},function(err,arr){
-                if(err) console.log(err);
-                else{  
-                    arr.pregra.push(req.body);
-                    res.redirect("/logedin");
-                }
-            })
+            res.redirect("/logedin");
         }
-            /*you.findOne({your:query}
-                      arr.pregra.create(req.body,function(err){
-                        if(err){
-                            console.log(err);
-                        }
-                        else res.redirect("/logedin");
-                    })
-                }
-            })*/
     });
 })
 app.get("/preengshow",function(req,res){
@@ -341,6 +311,7 @@ app.get("/preengshow",function(req,res){
     })
 })
 app.post("/preengshowadd",function(req,res){
+    console.log(req.body);
     pregra.find((req.body),function(err,ans){
         if(err) console.warn(err);
         else{
@@ -355,7 +326,19 @@ app.get("/postengadd",isLoggedIn,function(req,res){
     res.render("postengadd.ejs");
 })
 app.post("/postengadd",function(req,res){
-    postgra.create(req.body,function(err){
+    var temp = {
+        username : String,
+        title    : String,
+        exam     : String,
+        year     : Number,
+        des      : String,
+    }
+    temp.username=req.user.username;
+    temp.title=req.body.title;
+    temp.exam= req.body.exam;
+    temp.year=req.body.year;
+    temp.des=req.body.des;
+    postgra.create(temp,function(err){
         if(err){
             console.log(err);
             res.render("/postengadd");
@@ -385,7 +368,19 @@ app.get("/coreadd",isLoggedIn,function(req,res){
     res.render("coreadd.ejs");
 })
 app.post("/coreadd",function(req,res){
-    coreint.create(req.body,function(err){
+    var temp = {
+        username : String,
+        title    : String,
+        company : String,
+        year     : Number,
+        des      : String,
+    }
+    temp.username=req.user.username;
+    temp.title=req.body.title;
+    temp.company= req.body.company;
+    temp.year=req.body.year;
+    temp.des=req.body.des;
+    coreint.create(temp,function(err){
         if(err){
              console.log(err);
              res.render("/coreadd")
@@ -415,7 +410,19 @@ app.get("/noncoreadd",isLoggedIn,function(req,res){
     res.render("noncoreadd.ejs");
 })
 app.post("/noncoreadd",function(req,res){
-    noncint.create(req.body,function(err){
+    var temp = {
+        username : String,
+        title    : String,
+        company : String,
+        year     : Number,
+        des      : String,
+    }
+    temp.username=req.user.username;
+    temp.title=req.body.title;
+    temp.company= req.body.company;
+    temp.year=req.body.year;
+    temp.des=req.body.des;
+    noncint.create(temp,function(err){
         if(err){
              console.log(err);
              res.render("/noncoreadd")
@@ -454,7 +461,25 @@ app.get("/creviewadd",isLoggedIn,function(req,res){
 })
 
 app.post("/creviewadd",function(req,res){
-    coaching.create(req.body,function(err){
+    var temp={
+        username : String,
+        name     : String,
+        type     : String,
+        country  : String,
+        state    : String,
+        district : String,
+        city     : String,
+        review   : String,
+    }
+    temp.username = req.user.username;
+    temp.name     = req.body.name;
+    temp.type     = req.body.type;
+    temp.country  = req.body.state;
+    temp.state    = req.body.state;
+    temp.district = req.body.district;
+    temp.city     = req.body.city;
+    temp.review   = req.body.review;
+    coaching.create(temp,function(err){
         if(err){
             console.log(err);
         }
@@ -482,12 +507,28 @@ app.post("/creviewshowadd",function(req,res){
 // get coaching reviews section 
 
 
-app.get("/getcr",function(req,res){
+app.get("/getcr",isLoggedIn,function(req,res){
     res.render("getcr.ejs");
 })
 
 app.post("/getcr",function(req,res){
-    gcoaching.create(req.body,function(err){
+    var temp={
+        username : String,
+        name     : String,
+        type     : String,
+        country  : String,
+        state    : String,
+        district : String,
+        city     : String,
+    }
+    temp.username = req.user.username;
+    temp.name     = req.body.name;
+    temp.type     = req.body.type;
+    temp.country  = req.body.state;
+    temp.state    = req.body.state;
+    temp.district = req.body.district;
+    temp.city     = req.body.city;
+    gcoaching.create(temp,function(err){
         if(err){
             console.log(err);
         }
