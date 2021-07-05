@@ -132,7 +132,14 @@ var stuffs = mongoose.Schema({
     email    : String,
     img      : String,
 })
-
+var wishbooks = mongoose.Schema({
+    username : String,
+    id       : String
+})
+var wishstuff = mongoose.Schema({
+    username: String,
+    id      : String
+})
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
 var pregra      = mongoose.model('pregra' , pregras );
@@ -229,8 +236,31 @@ app.post("/searchbook",function(req,res){
         else res.render("showbook",{ans:ans});
     })
 })
-app.delete("/deletebook",function(req,res){
-    console.log("delted !!!");
+app.get("/usershowbook",function(req,res){
+    book.find({username:req.user.username},function(err,ans){
+        if(err) console.log(err);
+        else res.render("showbook.ejs",{ans:ans})
+    })
+})
+app.post("/usersearchbook",function(req,res){
+    var temp={
+        username : String,
+        name     : String,
+        author   : String,
+        type     : String,
+        category : String,
+        branch   : String,
+    }
+    temp.username = req.user.username;
+    temp.name     = req.body.name;
+    temp.author   = req.body.author;
+    temp.type     = req.body.type;
+    temp.category = req.body.category;
+    temp.branch   = req.body.branch;
+    book.find(temp,function(err,ans){
+        if(err) console.log(err);
+        else res.render("showbook",{ans:ans});
+    })
 })
 // sellstuf routes
 app.get("/sellstuff",isLoggedIn,function(req,res){
