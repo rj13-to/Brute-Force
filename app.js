@@ -341,7 +341,6 @@ app.get("/preengshow",function(req,res){
     })
 })
 app.post("/preengshowadd",function(req,res){
-    console.log(req.body);
     pregra.find((req.body),function(err,ans){
         if(err) console.warn(err);
         else{
@@ -349,6 +348,37 @@ app.post("/preengshowadd",function(req,res){
         }
     })
 })
+// preeng contruibution show 
+app.get("/contpregra",function(req,res){
+    pregra.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("contpregra",{ans:ans});
+        }
+    })
+})
+app.post("/contpregra",function(req,res){
+    var temp ={
+        username : String,
+        title    : String,
+        exam     : String,
+        year     : Number,
+        des      : String,
+    }
+    temp.username = req.user.username;
+    temp.title    = req.body.title;
+    temp.exam     = req.body.exam;
+    temp.year     = req.body.year;
+    temp.des      = req.body.des;
+    pregra.find(temp,function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("contpregra",{ans:ans});
+        }
+    })
+})
+
+
 // post graduation exams section 
 
 
