@@ -357,8 +357,21 @@ app.get("/contpregra",function(req,res){
         }
     })
 })
-app.post("/contpregra",function(req,res){
-    var temp ={
+app.get("/delpregra/:id",function(req,res){
+    pregra.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/contpregra');
+        else res.redirect('/logedin');
+    })
+})
+
+// post graduation exams section 
+
+
+app.get("/postengadd",isLoggedIn,function(req,res){
+    res.render("postengadd.ejs");
+})
+app.post("/postengadd",isLoggedIn,function(req,res){
+    var temp = {
         username : String,
         title    : String,
         exam     : String,
@@ -370,34 +383,6 @@ app.post("/contpregra",function(req,res){
     temp.exam     = req.body.exam;
     temp.year     = req.body.year;
     temp.des      = req.body.des;
-    pregra.find(temp,function(err,ans){
-        if(err) console.warn(err);
-        else{
-             res.render("contpregra",{ans:ans});
-        }
-    })
-})
-
-
-// post graduation exams section 
-
-
-app.get("/postengadd",isLoggedIn,function(req,res){
-    res.render("postengadd.ejs");
-})
-app.post("/postengadd",function(req,res){
-    var temp = {
-        username : String,
-        title    : String,
-        exam     : String,
-        year     : Number,
-        des      : String,
-    }
-    temp.username=req.user.username;
-    temp.title=req.body.title;
-    temp.exam= req.body.exam;
-    temp.year=req.body.year;
-    temp.des=req.body.des;
     postgra.create(temp,function(err){
         if(err){
             console.log(err);

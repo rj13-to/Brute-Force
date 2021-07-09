@@ -147,71 +147,12 @@
           box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
           margin: -50px auto 50px; 
           ">
-
-
-          <!--<div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-          </div>-->
-<div class="container">
-<div style="padding:50px">
-      <h5 style="
-            padding: 10px;
-            font-weight: 700;
-            color : rgb(0, 0, 153);
-            font-family: Arial, Helvetica, sans-serif;
-            text-align:center;
-            ">
-            Select any search option:
-        </h5>  
-<div class="row">
-<div class="col-lg-6">
-
-    <form method="POST" action="/preengshowadd">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Exam</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Exam</div>
-              </div>
-              <input type="text" name="exam" class="form-control" id="inlineFormInputGroup" placeholder="Exam Name" style="min-width:300px">
-            </div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-success mb-2">Submit</button>
-          </div>
-        </div>
-      </form>
-</div>
-
-<div class="col-lg-6">
-    <form method="POST" action="/preengshowadd">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Year</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Year</div>
-              </div>
-              <input type="text" name="year" class="form-control" id="inlineFormInputGroup" placeholder="Enter Year " style="min-width:300px">
-            </div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-success mb-2">Submit</button>
-          </div>
-        </div>
-      </form>
-</div>
-</div>
-</div>
-</div> <!--container ends-->
-
 <div class="container"><!--container starts-->
   <% if(ans.length != 0){ %>
     <% ans.forEach(function(blog) { %>
       <div class="container"style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
                   padding:0px;margin-bottom:50px"> 
-          <div style="background-color: rgb(253, 172, 83)">
+          <div style="background-color: rgb(221, 65, 50)">
             <h4 style="padding:8px;color:white">
               <%=blog.title%>
             </h4>
@@ -232,6 +173,10 @@
               </p>
             
           </div>
+          <div style="margin:5px;">
+            <a href="/delpregra/<%=blog.id%>" class="btn" style="background-color:red;color:white">Delete</a>
+          </div>
+          <div style="margin-top:2px">.</div>
       </div>
   <% }); %>
   <% } else{ %>  
