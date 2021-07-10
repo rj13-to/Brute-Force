@@ -126,7 +126,7 @@
             color: rgb(0, 102, 255);
             margin-top: 70px;
             ">
-              Welcome to go through the experiece of core-interviews:
+            Thanks for your valuable contribution about Core Interviews:
             </h6>
       <h3 style="
             text-align: center;
@@ -135,7 +135,7 @@
             font-family: Arial, Helvetica, sans-serif;
             
             ">
-            Core-Interviews
+           Find your Core Interviews Contribution below
         </h3>  
         <hr style="
           border:none;
@@ -148,63 +148,6 @@
           margin: -50px auto 50px; 
           ">
 
-
-          <!--<div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-          </div>-->
-<div class="container">
-<div style="padding:50px">
-      <h5 style="
-            padding: 10px;
-            font-weight: 700;
-            color : rgb(0, 0, 153);
-            font-family: Arial, Helvetica, sans-serif;
-            text-align:center;
-            ">
-            Select any search option:
-        </h5>  
-<div class="row">
-<div class="col-lg-6">
-
-    <form method="POST" action="/coreshowadd">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Company</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Company</div>
-              </div>
-              <input type="text" name="company" class="form-control" id="inlineFormInputGroup" placeholder="Company Name" style="min-width:300px">
-            </div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-success mb-2">Submit</button>
-          </div>
-        </div>
-      </form>
-</div>
-
-<div class="col-lg-6">
-    <form method="POST" action="/coreshowadd">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Year</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Year</div>
-              </div>
-              <input type="text" name="year" class="form-control" id="inlineFormInputGroup" placeholder="Enter Year " style="min-width:300px">
-            </div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-success mb-2">Submit</button>
-          </div>
-        </div>
-      </form>
-</div>
-</div>
-</div>
-</div> <!--container ends-->
 
 <div class="container"><!--container starts-->
   <% if(ans.length != 0){ %>
@@ -231,6 +174,10 @@
                 <%=blog.des%>
               </p>
           </div>
+          <div style="margin-top:5px;margin-left:5px">
+            <a href="/delcore/<%=blog.id%>" class="btn" style="background-color:red;color:white">Delete</a>
+          </div>
+          <div style="color: white;"> .</div>
       </div>
   <% }); %>
   <% } else{ %>  

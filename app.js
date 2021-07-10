@@ -407,6 +407,23 @@ app.post("/postengshowadd",function(req,res){
         }
     })
 })
+// posteng contribution show 
+
+app.get("/contpostgra",function(req,res){
+    postgra.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("contpostgra",{ans:ans});
+        }
+    })
+})
+app.get("/delpostgra/:id",function(req,res){
+    postgra.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/contpostgra');
+        else res.redirect('/logedin');
+    })
+})
+
 // core graduation exams section 
 
 app.get("/coreadd",isLoggedIn,function(req,res){
@@ -449,6 +466,23 @@ app.post("/coreshowadd",function(req,res){
         else res.render("coreshow",{ans,ans});
     });
 })
+// non-core contribution show 
+
+app.get("/contcore",function(req,res){
+    coreint.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("contcore",{ans:ans});
+        }
+    })
+})
+app.get("/delcore/:id",function(req,res){
+    coreint.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/contcore');
+        else res.redirect('/logedin');
+    })
+})
+
 // noncore inteview section 
 
 app.get("/noncoreadd",isLoggedIn,function(req,res){
@@ -491,6 +525,24 @@ app.post("/noncoreshowadd",function(req,res){
         else res.render("noncoreshow",{ans,ans});
     });
 })
+// non-core contribution show 
+
+app.get("/contnonc",function(req,res){
+    noncint.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("contnonc",{ans:ans});
+        }
+    })
+})
+app.get("/delnonc/:id",function(req,res){
+    noncint.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/contnonc');
+        else res.redirect('/logedin');
+    })
+})
+
+
 // books review section 
 
 app.get("/breviewadd",function(req,res){
