@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/6b383aaf03.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+    /*body{
+      background-position: 0px 0px, 10px 10px;
+        background-size: 20px 20px;
+        background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
+    }*/
+    .cover{
+        background     : white;
+        padding-top    : 80px;
+        padding-bottom : 80px;
+      }
+      .rules{
+        margin     : auto;
+        border     : 2px solid black;
+        padding    : 10px;
+        background : silver;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      .rulesinner{
+        border     : 2px solid black;
+        padding    : 5px;
+        background : white;
+      }
+      .lowerf{
+          color:  black;
+          margin-bottom: 20px;
+          
+      }
+      .upperf{
+        
+        padding-top: 30px;
+        padding-bottom: 100px;
+        padding-left: 3%;
+        padding-right: 3%;
+        margin-bottom: 10px;
+        background-image: url('last.jpg');
+        background-repeat: no-repeat ;
+        background-position: center;
+      }
+      .special{
+        font-weight: 500;
+        font-size: 16px;
+      }
+      .special:hover{
+        color: rgb(0,0,153);
+      }
+      .links{
+        font-family: "Lucida Console", "Courier New", monospace;
+        color: rgb(26,26, 26);
+        font-weight: 400;
+        font-size: 15px;
+        margin: 1px;
+      }
+      .letters{
+        margin: auto;
+        width: 450px;
+        border: 2px solid black;
+        padding: 10px;
+        left: 20%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+        background: white;
+      }
+      .inner{
+        border: 2px solid black;
+        padding-top :30px;
+        padding-bottom: 30px;
+        padding-left: 10px;
+      }
+    </style>
+    <title>Brute Force</title>
+</head>
+<body >
+
+
+    <!--nav bar section -->
+
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+   
+        <a class="navbar-brand" href="#" style="color: black;"><i class="fas fa-bold" style="font-size:24px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:24px;color:blue">orce</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+              
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color: red;">Wish List <i class="fa fa-heart" style="color:red"></i><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color: grey;">For Sell <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: grey;">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Basic</a>
+                <a class="dropdown-item" href="#">Address</a>
+                <a class="dropdown-item" href="#">Phone No</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Log Out</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#" style="color: grey;">Notifications <i class="fa fa-bell" ></i><span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+            <!-- nav bar ends--> 
+ 
+      <h6 style="
+            text-align:  center;
+            font-weight: 600;
+            color: rgb(0, 102, 255);
+            margin-top: 70px;
+            ">
+              Welcome to buy the stuff:
+            </h6>
+      <h3 style="
+            text-align: center;
+            font-weight: 700;
+            color : rgb(0, 0, 153);
+            font-family: Arial, Helvetica, sans-serif;
+            
+            ">
+            Stuff for Sell
+        </h3>  
+        <hr style="
+          border:none;
+          height: 20px;
+          width: 80%;
+          height: 50px;
+          margin-top: 0;
+          border-bottom: 1px solid rgb(0,0,153);
+          box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
+          margin: -50px auto 50px; 
+          ">
+
+<div class="" style="padding-left:30px;padding-right:30px">
+  <% if(ans.length != 0){ %>
+    <div class="row " >
+    <% ans.forEach(function(book) { %>
+        <div class="col-lg-3 col-md-6 col-sm-6 ">
+            <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                        height: 400px;
+                        margin-bottom: 20px;
+                        ">
+              <img src="./uploads/<%=book.img%>" alt="" style="height: 250px;width: 100%;"> 
+              <div style="padding:10px">
+                <h5 style="color : rgb(0, 0, 153);"><%=book.name%></h5>
+                <h6 style="color: rgb(0, 102, 255);">Price: <%=book.price%></h6>
+                <div style="margin-top:5px;margin-left:5px">
+                    <a href="/delstuff/<%=book.id%>" class="btn" style="background-color:red;color:white">Delete</a>
+                  </div>
+              </div>
+            </div>
+        </div>
+  <% }); %>
+</div>
+  <% } else{ %>  
+      <h3 style="
+            text-align: center;
+            font-weight: 700;
+            color : rgb(0, 0, 153);
+            font-family: Arial, Helvetica, sans-serif;
+            
+            ">
+            Sorry No Result Found 
+        </h3>  
+  <% } %>
+
+</div>
+
+<div class="footer">
+  <div class="upperf">
+
+    <div class="letters">
+        <div class="inner">
+            <h4 style="
+                      text-align: center;
+                      color: rgb(0, 0, 153);
+                      font-weight: 500;
+                      font-family: Lucida Console, Courier New, monospace;
+                      ">Every News of Book-Ocean</h4>
+            <h6 style="margin-bottom: 5px;">Subscribe our Newsletter get latest news about us!!!</h6>
+
+             <form>
+              <div class="form-row align-items-center">
+                <div class="col-auto">
+                  <label class="sr-only" for="inlineFormInputGroup">Email</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">@</div>
+                    </div>
+                    <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Enter Email" required style="width: 250px;">
+                  </div>
+                </div>
+  
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+                </div>
+              </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px">
+      <div class="col-xl-6 col-lg-12 " style="margin-bottom: 20px;" >
+        <h2 style="color: white ; margin-top: 10px; font-weight: 400;"> <i class="fas fa-bold" style="font-size:40px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:40px;color:blue;">orce</i></h2>
+        
+         <p style="width:80%">Book Ocean is a project for the engineering students, it contains section to sell used stationary, books and share/get review about books, interviews, entrance exams and coachings</p>
+         <a href="#">
+              <i class="fa fa-facebook-square" 
+              style="
+                    color: blue;
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            
+            <a href="#">
+              <i class="fa fa-instagram" 
+              style="
+                    color: red;
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            <a href="#">
+              <i class="fa fa-twitter-square" 
+              style="
+                    color: rgb(29,161,242);
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            <a href="#">
+              <i class="fa fa-linkedin" 
+              style="
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <h5 style="color: rgb(0,0,153);font-weight: 600;">Important Links</h5>
+        <ul>
+          <li >
+            <a class="links" href="#">Home</a>
+          </li>
+          <li >
+            <a class="links" href="#">About Us </a>
+          </li>
+          <li >
+            <a class="links" href="#">Report User</a>
+          </li>
+          <li >
+            <a class="links" href="#">Quick Help</a>
+          </li>
+          <li >
+            <a class="links" href="#">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+
+
+       <div class="col-xl-2 col-md-4">
+           <h5 style="color: rgb(0,0,153);font-weight: 600;">Basic Links</h5>
+            <ul>
+              <li >
+                  <a class="links" href="#">Login</a>
+              </li>
+
+              <li >
+                  <a class="links" href="#">Buy Books</a>
+              </li>
+
+              <li >
+                  <a class="links" href="#">Sell Books</a>
+              </li>
+
+              <li >
+                  <a class="links" href="#">Add Review</a>
+              </li>
+
+              <li >
+                  <a class="links" href="#">Famous Novel</a>
+              </li>
+            </ul>
+      </div>
+
+
+      <div class="col-xl-2 col-md-4">
+        <div class="row">
+          <div class="col-xl-12" style="padding-right : 2%">
+              <h5 style="color: rgb(0,0,153);font-weight: 600;">Contact Us:</h5>
+
+              <h6 style="color:rgb(0,0,0)"><strong>Email:</strong><br><span class="special"> prabhdeol313@gmail.com</span></h6>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xl-12">
+            <h6 style="color: rgb(0,0,153);font-weight: 600;padding-bottom: 10px;">Made by: Prabhdeep Singh</h6>
+            <a href="#">
+              <i class="fa fa-facebook-square" 
+              style="
+                    color: blue;
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            
+            <a href="#">
+              <i class="fa fa-instagram" 
+              style="
+                    color: red;
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            <a href="#">
+              <i class="fa fa-twitter-square" 
+              style="
+                    color: rgb(29,161,242);
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            <a href="#">
+              <i class="fa fa-github" 
+              style="
+                    color: black;
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+            <a href="#">
+              <i class="fa fa-linkedin" 
+              style="
+                    color: rgb(0, 153, 255);
+                    font-size: 30px;
+                    margin-left: 3px;
+                    margin-right: 3px;
+                    "></i></a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  <div class="lowerf">
+      <h6 style="
+                color:black;
+                text-align: center;
+                margin-bottom: 5px;
+                font-weight: 600;
+                ">
+        ©2021 All Rights Reserved by ©2021 All Rights Reserved by <i class="fas fa-bold" style="font-size:20px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:20px;color:blue">orce</i>
+      </h6>
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<script>
+var bookcat = {
+  "Book" : {
+        "Pre Entrance Exams" : ["MATHS", "PHYSICS", "CHEMISTRY", "JEE-Main", 
+                    "JEE-Advanced", "BITSAT", "VITEEE", "SRMJEEE", 
+                    "COMEDK", "KIITEE", "WBJEE", "MHTCET", "BCECE", 
+                    "ENGLISH", "OTHER"],
+
+        "Post Entance Exams" : ["GATE", "UPSC", "(IES)", "UPSC", "Civil", "Service", 
+                    "IAS", "RBI", "Grade", "B PSU", "RRB", "SSC", "JE", 
+                    "ISRO/BARC","OTHER"],
+        "B.Tech-Branch"      : [
+                      "Aeronautical Engineering", "Aerospace Engineering", 
+                      "Automobile Engineering", "Biomedical Engineering", 
+                      "Biotechnology Engineering", "Ceramic Engineering", 
+                      "Chemical Engineering", "Civil Engineering", 
+                      "Communications Engineering", "Computer Science Engineering", 
+                      "Construction Engineering", "Electrical Engineering", 
+                      "Electronics & Communication Engineering", "Electronics Engineering", 
+                      "Environmental Engineering", "Industrial Engineering", 
+                      "Marine Engineering", "Mechanical Engineering", 
+                      "Mechatronics Engineering", "Metallurgical Engineering", 
+                      "Mining Engineering", "Petroleum Engineering", 
+                      "Power Engineering", "Production Engineering", 
+                      "Robotics Engineering", "Structural Engineering", 
+                      "Telecommunication Engineering", "Textile Engineering", 
+                      "Tool Engineering", "Transportation Engineering", 
+                      "OTHER"
+                     ],
+        "M.Tech"        : [
+                    "Aeronautical Engineering", "Aerospace Engineering",
+                    "Agriculture Engineering", "Air Armament", "Alloy Technology", 
+                    "Applied Electronics", "Aqua Cultural Engineering", 
+                    "Artificial Intelligence and Machine Learning", 
+                    "Automobile/Automotive Engineering", "Bio Mineral Engineering", 
+                    "Biomedical Engineering", "Biotechnology Engineering", "CAD/CAM", 
+                    "Chemical Engineering", "Civil Engineering", "Communication Systems", 
+                    "Computer Engineering", "Computer Integrated Manufacturing", 
+                    "Computer Network Engineering", "Computer Science Engineering", 
+                    "Computer Science Technology", "Construction Engineering and Management", 
+                    "Construction Technology", "Control Systems", "Cyber Security", 
+                    "Design and Manufacturing Engineering", "Digital Electronics & Communication Systems", 
+                    "Digital System and Signal Processing", "Earthquake Engineering", 
+                    "Electrical Devices & Power Systems", "Electrical Engineering", 
+                    "Electronics & Instrumentation Engineering", 
+                    "Electronics & Telecommunication Engineering", 
+                    "Electronics Engineering", "Electronics and Communication Engineering", 
+                    "Electronics and Electrical Engineering", "Embedded Systems", 
+                    "Energy Engineering", "Energy Systems Engineering", "Engineering Design", 
+                    "Engineering Physics", "Environmental Engineering", "Fluid Dynamics", 
+                    "Food Biotechnology", "Food Technology", "Geotechnical Engineering", 
+                    "Industrial Engineering", "Information Technology", "Leather Technology", 
+                    "Machine Design", "Marine Engineering", "Material Science and Engineering", 
+                    "Mechanical Engineering", "Microelectronics and VLSI Design", 
+                    "Mining Engineering", "NanoTechnology", "Signal Processing", 
+                    "Software Engineering", "VLSI Design / VLSI Technology", 
+                    "OTHER"
+                    ],
+        "Other"        : ["OTHER"],
+      },
+  "PDF" : {
+        "Pre Entrance Exams" : ["MATHS", "PHYSICS", "CHEMISTRY", "JEE-Main", 
+                    "JEE-Advanced", "BITSAT", "VITEEE", "SRMJEEE", 
+                    "COMEDK", "KIITEE", "WBJEE", "MHTCET", "BCECE", 
+                    "ENGLISH", "OTHER"],
+
+        "Post Entance Exams" : ["GATE", "UPSC", "(IES)", "UPSC", "Civil", "Service", 
+                    "IAS", "RBI", "Grade", "B PSU", "RRB", "SSC", "JE", 
+                    "ISRO/BARC","OTHER"],
+        "B.Tech-Branch"      : [
+                      "Aeronautical Engineering", "Aerospace Engineering", 
+                      "Automobile Engineering", "Biomedical Engineering", 
+                      "Biotechnology Engineering", "Ceramic Engineering", 
+                      "Chemical Engineering", "Civil Engineering", 
+                      "Communications Engineering", "Computer Science Engineering", 
+                      "Construction Engineering", "Electrical Engineering", 
+                      "Electronics & Communication Engineering", "Electronics Engineering", 
+                      "Environmental Engineering", "Industrial Engineering", 
+                      "Marine Engineering", "Mechanical Engineering", 
+                      "Mechatronics Engineering", "Metallurgical Engineering", 
+                      "Mining Engineering", "Petroleum Engineering", 
+                      "Power Engineering", "Production Engineering", 
+                      "Robotics Engineering", "Structural Engineering", 
+                      "Telecommunication Engineering", "Textile Engineering", 
+                      "Tool Engineering", "Transportation Engineering", 
+                      "OTHER"
+                     ],
+        "M.Tech"        : [
+                    "Aeronautical Engineering", "Aerospace Engineering",
+                    "Agriculture Engineering", "Air Armament", "Alloy Technology", 
+                    "Applied Electronics", "Aqua Cultural Engineering", 
+                    "Artificial Intelligence and Machine Learning", 
+                    "Automobile/Automotive Engineering", "Bio Mineral Engineering", 
+                    "Biomedical Engineering", "Biotechnology Engineering", "CAD/CAM", 
+                    "Chemical Engineering", "Civil Engineering", "Communication Systems", 
+                    "Computer Engineering", "Computer Integrated Manufacturing", 
+                    "Computer Network Engineering", "Computer Science Engineering", 
+                    "Computer Science Technology", "Construction Engineering and Management", 
+                    "Construction Technology", "Control Systems", "Cyber Security", 
+                    "Design and Manufacturing Engineering", "Digital Electronics & Communication Systems", 
+                    "Digital System and Signal Processing", "Earthquake Engineering", 
+                    "Electrical Devices & Power Systems", "Electrical Engineering", 
+                    "Electronics & Instrumentation Engineering", 
+                    "Electronics & Telecommunication Engineering", 
+                    "Electronics Engineering", "Electronics and Communication Engineering", 
+                    "Electronics and Electrical Engineering", "Embedded Systems", 
+                    "Energy Engineering", "Energy Systems Engineering", "Engineering Design", 
+                    "Engineering Physics", "Environmental Engineering", "Fluid Dynamics", 
+                    "Food Biotechnology", "Food Technology", "Geotechnical Engineering", 
+                    "Industrial Engineering", "Information Technology", "Leather Technology", 
+                    "Machine Design", "Marine Engineering", "Material Science and Engineering", 
+                    "Mechanical Engineering", "Microelectronics and VLSI Design", 
+                    "Mining Engineering", "NanoTechnology", "Signal Processing", 
+                    "Software Engineering", "VLSI Design / VLSI Technology", 
+                    "OTHER"
+                    ],
+        "Other"        : ["OTHER"],
+      }
+}
+
+
+window.onload = function () {
+  
+  var choice1 = document.getElementById("choice1"),
+      choice2 = document.getElementById("choice2"),
+      choice3 = document.getElementById("choice3");
+    for (var copytype in bookcat) 
+    {
+      choice1.options[choice1.options.length] = new Option(copytype, copytype);
+    }
+
+    choice1.onchange = function () {
+    choice2.length = 1; // remove all options bar first
+    choice3.length = 1; // remove all options bar first
+    if (this.selectedIndex < 1) return; // done 
+    for (var outercat in bookcat[this.value])
+    {
+      choice2.options[choice2.options.length] = new Option(outercat, outercat);
+    }
+    }
+    choice1.onchange(); // reset in case page is reloaded
+    choice2.onchange = function () {
+      choice3.length = 1; // remove all options bar first
+      if (this.selectedIndex < 1) return; // done 
+      var innercat = bookcat[choice1.value][this.value];
+      for (var i = 0; i < innercat.length; i++) {
+        choice3.options[choice3.options.length] = new Option(innercat[i], innercat[i]);
+      }
+    }
+}
+</script>
+
+
+      <!--   script ends -->
+</body>
+</html>

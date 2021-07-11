@@ -175,6 +175,37 @@ app.post("/login", passport.authenticate("local", {
 app.get("/profile",isLoggedIn,function(req,res){
     res.render("profile.ejs");
 })
+// contribution books 
+app.get("/profilebooks",function(req,res){
+    book.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("profilebooks",{ans:ans});
+        }
+    })
+})
+app.get("/delbooks/:id",function(req,res){
+    book.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/profilebooks');
+        else res.redirect('/logedin');
+    })
+})
+
+// contribution stuff
+app.get("/profilestuff",function(req,res){
+    stuff.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("profilestuff",{ans:ans});
+        }
+    })
+})
+app.get("/delstuff/:id",function(req,res){
+    stuff.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/profilestuff');
+        else res.redirect('/logedin');
+    })
+})
 
 app.get("/logedin",isLoggedIn ,function(req,res){  
     res.render("loghome.ejs");
