@@ -127,7 +127,7 @@
             color: rgb(0, 102, 255);
             margin-top: 70px;
             ">
-              Welcome to buy the stuff:
+              Welcome to buy the books:
             </h6>
       <h3 style="
             text-align: center;
@@ -136,7 +136,7 @@
             font-family: Arial, Helvetica, sans-serif;
             
             ">
-            Stuff for Sell
+            Books for Sell
         </h3>  
         <hr style="
           border:none;
@@ -150,74 +150,29 @@
           ">
 
 
-          <!--<div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-          </div>-->
-
-<div style="padding:50px">
-      <h5 style="
-            padding: 10px;
-            font-weight: 700;
-            color : rgb(0, 0, 153);
-            font-family: Arial, Helvetica, sans-serif;
-            text-align:center;
-            ">
-            Select any search option:
-        </h5>  
-        <div class="row">
-
-          <div class="col-lg-6" style="
-                      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                      padding: 10px ;
-                      margin-bottom: 10px;
-                    ">
-          <h6 style="padding-left:20px;">
-            -> By name: 
-          </h6>
-          <form method="POST" action="/searchstuff">
-            <div class="col-auto form-row align-items-center">
-    
-                <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                    <label class="sr-only" for="name">Stuff Name</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">Stuff</div>
-                      </div>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter name of stuff" required>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-auto">
-              <button type="submit" class="btn btn-success" style="margin: 10px;">Search</button>
-          </div>
-          </form>
-          </div> <!--search div ends-->
-    
-          <!--search div starts-->
-          
-    </div>  
-</div> <!--container ends-->
-<br><br>
-
-
 <div class="" style="padding-left:30px;padding-right:30px">
   <% if(ans.length != 0){ %>
     <div class="row " >
     <% ans.forEach(function(book) { %>
-        <div class="col-lg-3 col-md-6 col-sm-6 ">
-            <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-                        height: 400px;
-                        margin-bottom: 20px;
-                        ">
-              <img src="./uploads/<%=book.img%>" alt="" style="height: 250px;width: 100%;"> 
-              <div style="padding:10px">
-                <h5 style="color : rgb(0, 0, 153);"><%=book.name%></h5>
-                <h6 style="color: rgb(0, 102, 255);">Price: <%=book.price%></h6>
-                <a href="" class="btn btn-primary">Contact seller</a>
-                <a href="/addwishliststuff/<%=book.id%>" class="btn" style="background-color:red;color:white">Add to Wishlist</a>
-              </div>
+        <% book.stuff.forEach(function(list) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 ">
+                <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                            height: 400px;
+                            margin-bottom: 20px;
+                            ">
+                  <img src="./uploads/<%=list.img%>" alt="" style="height: 250px;width: 100%;"> 
+                  <div style="padding:10px">
+                    <h5 style="color : rgb(0, 0, 153);"><%=list.name%></h5>
+                    <h6 style="color: rgb(0, 102, 255);">Price: <%=list.price%></h6>
+                    <div style="margin-top:5px;margin-left:5px">
+                        <a href="" class="btn btn-primary">Contact seller</a>
+                        <a href="/removewishliststuff/<%=book.id%>" class="btn" style="background-color:red;color:white">Remove from List</a>
+                      </div>
+                    <div style="color: white;"> .</div>
+                  </div>
+                </div>
             </div>
-        </div>
+        <% }); %>
   <% }); %>
 </div>
   <% } else{ %>  

@@ -137,8 +137,8 @@ var wishbook = mongoose.Schema({
     book     : [books]
 })
 var wishstuff = mongoose.Schema({
-    username: String,
-    id      : String
+    username  : String,
+    stuff     : [stuffs]
 })
 var coaching    = mongoose.model('coaching', coachings);
 var gcoaching   = mongoose.model('gcoaching', gcoachings);
@@ -149,6 +149,7 @@ var coreint     = mongoose.model('coreint',coreints);
 var book        = mongoose.model('book',books);
 var stuff       = mongoose.model('stuff',stuffs);
 var wishbooks   = mongoose.model('wishbooks',wishbook);
+var wishstuffs  = mongoose.model('wishstuffs',wishstuff);
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
@@ -223,6 +224,42 @@ app.get("/addwishlistbooks/:id",function(req,res){
         }
     })
 })
+
+// wishlist stuff
+app.get("/wishliststuff",function(req,res){
+    wishstuffs.find({username:req.user.username},function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("wishliststuffs",{ans:ans});
+        }
+    })
+})
+app.get("/removewishliststuff/:id",function(req,res){
+    wishstuffs.deleteOne({_id:req.params.id},function(err){
+        if(err) res.redirect('/wishliststuff');
+        else res.redirect('/wishliststuff');
+    })
+})
+app.get("/addwishliststuff/:id",function(req,res){
+    stuff.findOne({_id:req.params.id},function(err,ans){
+        if(err){
+            console.log('nothing bro');
+            res.redirect('/showstuff');
+        }
+        else{
+            wishstuffs.create({username:req.user.username,stuff:ans},function(err){
+                if(err) 
+                {
+                    console.log(err);
+                    res.redirect('/showstuff');
+                }
+                else res.redirect('/showstuff');
+            })
+        }
+    })
+})
+
+
 // contribution stuff
 app.get("/profilestuff",function(req,res){
     stuff.find({username:req.user.username},function(err,ans){
