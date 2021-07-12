@@ -150,137 +150,30 @@
           ">
 
 
-          <!--<div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend">Title</span>
-          </div>-->
-
-<div style="padding:50px">
-      <h5 style="
-            padding: 10px;
-            font-weight: 700;
-            color : rgb(0, 0, 153);
-            font-family: Arial, Helvetica, sans-serif;
-            text-align:center;
-            ">
-            Select any search option:
-        </h5>  
-        <div class="row">
-
-          <div class="col-lg-6" style="
-                      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                      padding: 10px ;
-                      margin-bottom: 10px;
-                    ">
-          <h6 style="padding-left:20px;">
-            -> By name: 
-          </h6>
-          <form method="POST" action="/searchbook">
-            <div class="col-auto form-row align-items-center">
-    
-              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                <label class="sr-only" for="name">Book Name</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Book</div>
-                  </div>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name of book" required>
-                </div>
-              </div>
-    
-              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                <label class="sr-only" for="author">Author Name</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Author</div>
-                  </div>
-                  <input type="text" name="author" class="form-control" id="author" placeholder="Enter name of author" required >
-                </div>
-              </div>
-            </div>
-            <div class="col-auto">
-              <button type="submit" class="btn btn-success" style="margin: 10px;">Search</button>
-          </div>
-          </form>
-          </div> <!--search div ends-->
-    
-          <!--search div starts-->
-          <div class="col-lg-6" style="
-                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-                    padding: 10px ;
-                    margin-bottom: 10px;
-                  ">
-          <h6 style="padding-left:20px;">
-            -> By category: 
-          </h6>
-          <form method="POST" action="/searchbook">
-            <div class="col-auto form-row align-items-center">
-    
-              <div class="col-lg-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                      <label class="sr-only" for="country">Type</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">Type</div>
-                        </div>
-                        <select name="type" class="form-control" id="choice1" size="1" required>
-                                <option value="" selected="selected">Select Type of Book</option>
-                        </select>
-                      </div>
-              </div>
-    
-              <div class="col-lg-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                      <label class="sr-only" for="state">Category</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">Category</div>
-                        </div>
-                        <select name="category" class="form-control" id="choice2" size="1" required>
-                          <option value="" selected="selected">Please select Type first</option>
-                        </select>
-                      </div>
-              </div>
-    
-              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                      <label class="sr-only" for="district">Branch</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">Branch</div>
-                        </div>
-                          <select name="branch" class="form-control"  id="choice3" size="1" required>
-                            <option value="" selected="selected" >Please select Catergory first</option>
-                          </select>
-                      </div>
-              </div>
-        </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-success" style="margin: 10px;">Search</button>
-                </div>
-          </form>
-          </div><!--search div ends-->
-    
-    </div>  
-</div> <!--container ends-->
-<br><br>
-
-
 <div class="" style="padding-left:30px;padding-right:30px">
   <% if(ans.length != 0){ %>
     <div class="row " >
     <% ans.forEach(function(book) { %>
-        <div class="col-lg-3 col-md-6 col-sm-6 ">
-            <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-                        height: 400px;
-                        margin-bottom: 20px;
-                        ">
-              <img src="./uploads/<%=book.img%>" alt="" style="height: 250px;width: 100%;"> 
-              <div style="padding:10px">
-                <h5 style="color : rgb(0, 0, 153);"><%=book.name%></h5>
-                <h6 style="color: rgb(0, 102, 255);">Author: <%=book.author%></h6>
-                <h6 style="color: rgb(0, 102, 255);">Price: <%=book.price%></h6>
-                <a href="" class="btn btn-primary">Contact seller</a>
-                <a href="/addwishlistbooks/<%=book.id%>" class="btn" style="background-color:red;color:white">Add to Wishlist</a>
-              </div>
+        <% book.book.forEach(function(list) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 ">
+                <div style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                            height: 400px;
+                            margin-bottom: 20px;
+                            ">
+                  <img src="./uploads/<%=list.img%>" alt="" style="height: 250px;width: 100%;"> 
+                  <div style="padding:10px">
+                    <h5 style="color : rgb(0, 0, 153);"><%=list.name%></h5>
+                    <h6 style="color: rgb(0, 102, 255);">Author: <%=list.author%></h6>
+                    <h6 style="color: rgb(0, 102, 255);">Price: <%=list.price%></h6>
+                    <div style="margin-top:5px;margin-left:5px">
+                        <a href="" class="btn btn-primary">Contact seller</a>
+                        <a href="/removewishlistbooks/<%=book.id%>" class="btn" style="background-color:red;color:white">Remove from List</a>
+                      </div>
+                    <div style="color: white;"> .</div>
+                  </div>
+                </div>
             </div>
-        </div>
+        <% }); %>
   <% }); %>
 </div>
   <% } else{ %>  
