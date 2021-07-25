@@ -40,7 +40,7 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
-
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -105,6 +105,15 @@ var reviews = mongoose.Schema({
     branch   : String,
     des      : String,
 })
+var greviews = mongoose.Schema({
+    username : String,
+    name     : String,
+    author   : String,
+    isbn     : Number,
+    type     : String,
+    category : String,
+    branch   : String,
+})
 var books = mongoose.Schema({
     username : String,
     name     : String,
@@ -132,6 +141,9 @@ var stuffs = mongoose.Schema({
     email    : String,
     img      : String,
 })
+var newss    = mongoose.Schema({
+    email    : String
+}) 
 var wishbook = mongoose.Schema({
     username : String,
     book     : [books]
@@ -150,14 +162,17 @@ var book        = mongoose.model('book',books);
 var stuff       = mongoose.model('stuff',stuffs);
 var wishbooks   = mongoose.model('wishbooks',wishbook);
 var wishstuffs  = mongoose.model('wishstuffs',wishstuff);
+var review      = mongoose.model('review',reviews);
+var greview     = mongoose.model('greview',greviews);
+var news        = mongoose.model('news',newss);
 app.get("/",function(req,res){
     res.render("home.ejs");
 })
 app.post("/signup", function(req, res){
     User.register(new User({username: req.body.username,email:req.body.email}), req.body.password, function(err, user){
         if(err){
-            console.log(err);
-            return res.render("home.ejs");
+            req.flash('error', 'email or username is not available');
+            return res.render("home.ejs",{messages : req.flash()});
         }
         passport.authenticate("local")(req, res, function(){
             res.redirect("/logedin")
@@ -167,10 +182,16 @@ app.post("/signup", function(req, res){
 
 
 app.post("/login", passport.authenticate("local", {
-    successRedirect: "/logedin",
-    failureRedirect: "/home"
+    successRedirect : "/logedin",
+    failureRedirect : "/home",
+    failureFlash    : true,
 }) ,function(req, res){
 });
+
+app.get("/logedin",isLoggedIn ,function(req,res){ 
+    res.render("loghome.ejs");
+})
+
 // profile 
 
 app.get("/profile",isLoggedIn,function(req,res){
@@ -276,9 +297,6 @@ app.get("/delstuff/:id",function(req,res){
     })
 })
 
-app.get("/logedin",isLoggedIn ,function(req,res){  
-    res.render("loghome.ejs");
-})
 // sellbook routes 
 app.get("/sellbook",isLoggedIn,function(req,res){
     res.render("sellbook.ejs");
@@ -645,12 +663,89 @@ app.get("/delnonc/:id",function(req,res){
 
 // books review section 
 
-app.get("/breviewadd",function(req,res){
+app.get("/breviewadd",isLoggedIn,function(req,res){
     res.render("breviewadd.ejs");
 })
-app.get("/getbr",function(req,res){
+
+app.post("/breviewadd",function(req,res){
+    var temp={
+        username : String,
+        name     : String,
+        author   : String,
+        isbn     : Number,
+        type     : String,
+        category : String,
+        branch   : String,
+        des      : String,
+    }
+    temp.username = req.user.username;
+    temp.name     = req.body.name;
+    temp.author   = req.body.author;
+    temp.isbn     = req.body.isbn;
+    temp.type     = req.body.type;
+    temp.category = req.body.category;
+    temp.branch   = req.body.branch;
+    temp.des      = req.body.des;
+    review.create(temp,function(err){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect("/logedin");
+        }
+    }) 
+})
+app.get("/breviewshow",function(req,res){
+    review.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("breviewshow",{ans:ans});
+        }
+    })
+})
+app.post("/breviewshowadd",function(req,res){
+    review.find((req.body),function(err,ans){
+        if(err) console.warn(err);
+        else{
+             res.render("breviewshow",{ans:ans});
+        }
+    })
+})
+// get books reviews section 
+
+
+app.get("/getbr",isLoggedIn,function(req,res){
     res.render("getbr.ejs");
 })
+
+app.post("/getbr",function(req,res){
+    var temp={
+        username : String,
+        name     : String,
+        author   : String,
+        isbn     : Number,
+        type     : String,
+        category : String,
+        branch   : String,
+    }
+    temp.username = req.user.username;
+    temp.name     = req.body.name;
+    temp.author   = req.body.author;
+    temp.isbn     = req.body.isbn;
+    temp.type     = req.body.type;
+    temp.category = req.body.category;
+    temp.branch   = req.body.branch;
+    greview.create(temp,function(err){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect("/logedin");
+        }
+    }) 
+})
+
+
 
 // coaching review  secion 
 app.get("/creviewadd",isLoggedIn,function(req,res){
@@ -740,7 +835,15 @@ app.get("/logout", function(req, res){
     req.logout();
     res.redirect("/");
 });
-
+app.get("/sorry",function(req,res){
+    res.render("sorry");
+})
+app.post("/news",function(req,res){
+    news.create(req.body,function(err){
+        if(err) res.redirect("/logedin");
+        else res.redirect("logedin");
+    })
+})
 app.get("*",function(req,res){
     res.redirect("/");
 })

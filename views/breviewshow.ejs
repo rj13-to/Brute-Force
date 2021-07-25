@@ -82,6 +82,7 @@
 
     <!--nav bar section -->
 
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
    
         <a class="navbar-brand" href="#" style="color: black;"><i class="fas fa-bold" style="font-size:24px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:24px;color:blue">orce</i></a>
@@ -119,21 +120,14 @@
         </div>
       </nav>
             <!-- nav bar ends--> 
-<div class="container">
-
-<div class="cover">
-
-<div class="rules">
-    
-  <div class="rulesinner">
-
+ 
       <h6 style="
             text-align:  center;
             font-weight: 600;
             color: rgb(0, 102, 255);
-            margin-top: 20px;
+            margin-top: 70px;
             ">
-              Welcome to share your idea's about books:
+              Welcome to buy the books:
             </h6>
       <h3 style="
             text-align: center;
@@ -142,9 +136,9 @@
             font-family: Arial, Helvetica, sans-serif;
             
             ">
-            Books Reviews
-       </h3>  
-       <hr style="
+            Books for Sell
+        </h3>  
+        <hr style="
           border:none;
           height: 20px;
           width: 80%;
@@ -156,15 +150,34 @@
           ">
 
 
-         <!--<div class="input-group-prepend">
+          <!--<div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend">Title</span>
           </div>-->
 
-    <div class="container">
-      <form method="POST" action="/breviewadd">
-            <div class="col-auto form-row align-items-center">
+<div style="padding:50px">
+      <h5 style="
+            padding: 10px;
+            font-weight: 700;
+            color : rgb(0, 0, 153);
+            font-family: Arial, Helvetica, sans-serif;
+            text-align:center;
+            ">
+            Select any search option:
+        </h5>  
+        <div class="row">
 
-              <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+          <div class="col-lg-6" style="
+                      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                      padding: 10px ;
+                      margin-bottom: 10px;
+                    ">
+          <h6 style="padding-left:20px;">
+            -> By name: 
+          </h6>
+          <form method="POST" action="/breviewshowadd">
+            <div class="col-auto form-row align-items-center">
+    
+              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
                 <label class="sr-only" for="name">Book Name</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -173,8 +186,8 @@
                   <input type="text" name="name" class="form-control" id="name" placeholder="Enter name of book" required>
                 </div>
               </div>
-
-              <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+    
+              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
                 <label class="sr-only" for="author">Author Name</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -183,98 +196,108 @@
                   <input type="text" name="author" class="form-control" id="author" placeholder="Enter name of author" required >
                 </div>
               </div>
-
             </div>
-            <h6 style="
-                font-weight: 400;
-                color: rgb(0, 102, 255);
-                padding-top: 10px;
-                padding-left: 16px;
-                ">
-                  Note: ISBN is not compulsory but it will help in easy to access your review
-                </h6>
-            <div class="col-auto form-row align-items-center">
-
-              <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                <label class="sr-only" for="isbn">ISBN Number</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">ISBN  </div>
-                  </div>
-                  <input type="Number" name="isbn" class="form-control" id="isbn" placeholder="Enter ISBN">
-                </div>
-              </div>
-
-            </div>
-            <h5 style="
-                  font-weight: 500;
-                  color : rgb(0, 0, 153);
-                  font-family: Arial, Helvetica, sans-serif;
-                  padding-left: 16px;
-                  padding-top: 15px;
-                  ">
-                  Book Category:
-             </h5>  
-              <div class="col-auto form-row align-items-center">
-
-                      <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                              <label class="sr-only" for="country">Type</label>
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">Type</div>
-                                </div>
-                                <select name="type" class="form-control" id="choice1" size="1" required>
-                                        <option value="" selected="selected">Select Type of Book</option>
-                                </select>
-                              </div>
-                      </div>
-
-                      <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                              <label class="sr-only" for="state">Category</label>
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">Category</div>
-                                </div>
-                                <select name="category" class="form-control" id="choice2" size="1" required>
-                                  <option value="" selected="selected">Please select Type first</option>
-                                </select>
-                              </div>
-                      </div>
-
-                      <div class="col-lg-4 my-1" style="margin-bottom: 20px;padding-right: 20px;">
-                              <label class="sr-only" for="district">Branch</label>
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">Branch</div>
-                                </div>
-                                  <select name="branch" class="form-control"  id="choice3" size="1" required>
-                                    <option value="" selected="selected" >Please select Catergory first</option>
-                                  </select>
-                              </div>
-                      </div>
-                </div>
-                <div class="col-auto">
-                  <h5 style="text-align: center;color : rgb(0,51,204); font-weight: 500; margin-top: 20px; margin-bottom: 20px;">Add your review</h5>
-                  <textarea id="des" name="des" required class="form-control" style="margin-bottom: 30px;" rows="7" required></textarea>
-              </div>
-
-
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
+              <button type="submit" class="btn btn-success" style="margin: 10px;">Search</button>
+          </div>
+          </form>
+          </div> <!--search div ends-->
+    
+          <!--search div starts-->
+          <div class="col-lg-6" style="
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                    padding: 10px ;
+                    margin-bottom: 10px;
+                  ">
+          <h6 style="padding-left:20px;">
+            -> By category: 
+          </h6>
+          <form method="POST" action="/breviewshowadd">
+            <div class="col-auto form-row align-items-center">
+    
+              <div class="col-lg-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                      <label class="sr-only" for="country">Type</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Type</div>
+                        </div>
+                        <select name="type" class="form-control" id="choice1" size="1" required>
+                                <option value="" selected="selected">Select Type of Book</option>
+                        </select>
+                      </div>
+              </div>
+    
+              <div class="col-lg-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                      <label class="sr-only" for="state">Category</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Category</div>
+                        </div>
+                        <select name="category" class="form-control" id="choice2" size="1" required>
+                          <option value="" selected="selected">Please select Type first</option>
+                        </select>
+                      </div>
+              </div>
+    
+              <div class="col-xl-12 my-1" style="margin-bottom: 20px;padding-right: 20px;">
+                      <label class="sr-only" for="district">Branch</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">Branch</div>
+                        </div>
+                          <select name="branch" class="form-control"  id="choice3" size="1" required>
+                            <option value="" selected="selected" >Please select Catergory first</option>
+                          </select>
+                      </div>
+              </div>
+        </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success" style="margin: 10px;">Search</button>
+                </div>
+          </form>
+          </div><!--search div ends-->
+    
+    </div>  
+</div> <!--container ends-->
+<br><br>
+
+<div class="container"><!--container starts-->
+    <% if(ans.length != 0){ %>
+      <% ans.forEach(function(blog) { %>
+        <div class="container"style="box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                    padding:0px;margin-bottom:50px"> 
+            <div style="background-color: rgb(253, 172, 83)">
+              <h4 style="padding:8px;color:white">
+                <%=blog.name%>
+              </h4>
             </div>
-      </form>
-
-    </div> <!--container ends-->
-
-  </div><!-- rulesinner ends  -->
-
-</div><!-- rules ends -->
-
-</div> <!-- cover class ends-->
- 
-</div>  <!--contianer ends-->  
-
-
+            <div>
+                <h5 style="
+                    font-weight: 400;
+                    color : rgb(0, 0, 153);
+                    font-family: Arial, Helvetica, sans-serif;
+                    padding-left:10px;
+                    ">
+                    Author: <%=blog.author%>,  <%=blog.category%>,  <%=blog.branch%>
+                </h5>   
+                <p style="min-height:200px;padding:10px">
+                  <%=blog.des%>
+                </p>
+            </div>
+        </div>
+    <% }); %>
+    <% } else{ %>  
+        <h3 style="
+              text-align: center;
+              font-weight: 700;
+              color : rgb(0, 0, 153);
+              font-family: Arial, Helvetica, sans-serif;
+              
+              ">
+              Sorry No Result Found 
+          </h3>  
+    <% } %>
+  </div> <!--container ends-->
 
 <div class="footer">
   <div class="upperf">
@@ -462,7 +485,7 @@
                 margin-bottom: 5px;
                 font-weight: 600;
                 ">
-        ©2021 All Rights Reserved by Book Ocean
+        ©2021 All Rights Reserved by ©2021 All Rights Reserved by <i class="fas fa-bold" style="font-size:20px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:20px;color:blue">orce</i>
       </h6>
   </div>
 </div>
@@ -593,7 +616,6 @@ var bookcat = {
         "Other"        : ["OTHER"],
       }
 }
-
 
 
 window.onload = function () {

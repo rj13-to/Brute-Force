@@ -600,9 +600,15 @@
         </div>
       </nav>
             <!-- nav bar ends--> 
-
+<div >
+  <% if (messages.error) { %>
+    <br><br><br>
+    <div class="alert alert-danger" role="alert" style="text-align: center">
+      <%=messages.error%>
+    </div>
+  <% } %>
+  </div>
 <div class="mid">
-
 <div class="test" >
 
       <div style="text-align: center;">
@@ -1144,157 +1150,193 @@
 </div>
 </div>
 <div  class="famoussection">
-            <h6 style="
-                text-align:  center;
-                font-weight: 600;
-                color: rgb(0, 102, 255);
-                ">
-                find the most searched and recomended catagories below :
-            </h6>
-            <h1 style="
-                      text-align: center;
-                      font-weight: 700;
-                      color : rgb(0, 0, 153);
-                      font-family: Arial, Helvetica, sans-serif;
-                      ">
-                Popular Catagories 
-            </h1>
-            <hr style="
-                      border:none;
-                      height: 20px;
-                      width: 60%;
-                      height: 50px;
-                      margin-top: 0;
-                      border-bottom: 1px solid rgb(0,0,153);
-                      box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
-                      margin: -50px auto 50px; 
-                      ">
-            <div class="row">
-              
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat1" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:rgb(255, 0, 0);font-weight: 500;
-                                ">JEE Advance</h5>
-                </div>
-              </div>
+  <h6 style="
+      text-align:  center;
+      font-weight: 600;
+      color: rgb(0, 102, 255);
+      ">
+      find the study material for the engineering students:
+  </h6>
+  <h1 style="
+            text-align: center;
+            font-weight: 700;
+            color : rgb(0, 0, 153);
+            font-family: Arial, Helvetica, sans-serif;
+            ">
+      Study Material 
+  </h1>
+  <hr style="
+            border:none;
+            height: 20px;
+            width: 60%;
+            height: 50px;
+            margin-top: 0;
+            border-bottom: 1px solid rgb(0,0,153);
+            box-shadow: 0 20px 20px -20px rgb(0, 0, 153);
+            margin: -50px auto 50px; 
+            ">
+  <div class="row">
+    
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat1" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:rgb(255, 0, 0);font-weight: 500;
+                      ">CSE</h5>
+      </div>
+      </a>
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat2" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:blue;font-weight: 500;
-                                ">Algorithms</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat2" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:blue;font-weight: 500;
+                      ">Info. Tech.</h5>
+        </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat3" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:green;font-weight: 500;
-                                ">GATE</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat3" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:green;font-weight: 500;
+                      ">Electronics</h5>
+        </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat4" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:purple;font-weight: 500;
-                                ">UPSE</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat4" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:purple;font-weight: 500;
+                      ">Electrical </h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat5" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:gold;font-weight: 500;
-                                ">Maths</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat5" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:gold;font-weight: 500;
+                      ">Mechanical</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat6" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color: olive;font-weight: 500;
-                                ">Physics</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat6" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color: olive;font-weight: 500;
+                      ">Civil Eng.</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat7" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:tomato;font-weight: 500;
-                                ">Jee Mains</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat7" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:tomato;font-weight: 500;
+                      ">Chemical Eng.</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat8" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:peru;font-weight: 500;
-                                ">Devlopment</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat8" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:peru;font-weight: 500;
+                      ">Mining Eng.</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat9" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color: magenta;font-weight: 500;
-                                ">BIT-SAT</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat9" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color: magenta;font-weight: 500;
+                      ">Bio Medical</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat10" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:maroon;font-weight: 500;
-                                ">B.Tech</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat10" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:maroon;font-weight: 500;
+                      ">Bio Tech. </h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat11" >
-                    <h5 style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:midnightblue;font-weight: 500;
-                                ">M.Tech</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat11" >
+          <h5 style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:midnightblue;font-weight: 500;
+                      ">Metallurgy</h5>
+      </div>
+      </a>
+      
+    </div>
 
-              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
-                <div class="badar2 cat12" >
-                    <h5   style="text-align: center;
-                                padding-top: 15px;
-                                padding-bottom: 15px;
-                                color:lightsalmon;font-weight: 500;
-                                ">CAT</h5>
-                </div>
-              </div>
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+      <a href="/sorry">
+        <div class="badar2 cat12" >
+          <h5   style="text-align: center;
+                      padding-top: 15px;
+                      padding-bottom: 15px;
+                      color:lightsalmon;font-weight: 500;
+                      ">B.Arch.</h5>
+      </div>
+      </a>
+      
+    </div>
 
-            </div>
-
-            
+  </div>
+  
 </div>
+
+
 
 
 
@@ -1308,10 +1350,10 @@
                       color: rgb(0, 0, 153);
                       font-weight: 500;
                       font-family: Lucida Console, Courier New, monospace;
-                      ">Every News of Book-Ocean</h4>
+                      ">Every News of Brute-Force</h4>
             <h6 style="margin-bottom: 5px;">Subscribe our Newsletter get latest news about us!!!</h6>
 
-             <form>
+             <form method="POST" action="/news">
               <div class="form-row align-items-center">
                 <div class="col-auto">
                   <label class="sr-only" for="inlineFormInputGroup">Email</label>
@@ -1319,7 +1361,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">@</div>
                     </div>
-                    <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Enter Email" required style="width: 250px;">
+                    <input type="email" name="email" class="form-control" id="inlineFormInputGroup" placeholder="Enter Email" required style="width: 250px;">
                   </div>
                 </div>
   
@@ -1374,7 +1416,7 @@
         <h5 style="color: rgb(0,0,153);font-weight: 600;">Important Links</h5>
         <ul>
           <li >
-            <a class="links" href="#">Home</a>
+            <a class="links" href="/logedin">Home</a>
           </li>
           <li >
             <a class="links" href="#">About Us </a>
@@ -1391,34 +1433,7 @@
         </ul>
       </div>
 
-
        <div class="col-xl-2 col-md-4">
-           <h5 style="color: rgb(0,0,153);font-weight: 600;">Basic Links</h5>
-            <ul>
-              <li >
-                  <a class="links" href="#">Login</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Buy Books</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Sell Books</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Add Review</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Famous Novel</a>
-              </li>
-            </ul>
-      </div>
-
-
-      <div class="col-xl-2 col-md-4">
         <div class="row">
           <div class="col-xl-12" style="padding-right : 2%">
               <h5 style="color: rgb(0,0,153);font-weight: 600;">Contact Us:</h5>
@@ -1426,11 +1441,14 @@
               <h6 style="color:rgb(0,0,0)"><strong>Email:</strong><br><span class="special"> prabhdeol313@gmail.com</span></h6>
             </div>
         </div>
-        <br>
+      </div>
+
+
+      <div class="col-xl-2 col-md-4">
         <div class="row">
           <div class="col-xl-12">
             <h6 style="color: rgb(0,0,153);font-weight: 600;padding-bottom: 10px;">Made by: Prabhdeep Singh</h6>
-            <a href="#">
+            <a href="https://www.facebook.com/people/Prabhdeep-Singh/100026293058210/">
               <i class="fa fa-facebook-square" 
               style="
                     color: blue;
@@ -1439,7 +1457,7 @@
                     margin-right: 3px;
                     "></i></a>
             
-            <a href="#">
+            <a href="https://www.instagram.com/rj13_to/">
               <i class="fa fa-instagram" 
               style="
                     color: red;
@@ -1447,7 +1465,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://twitter.com/rj13_to">
               <i class="fa fa-twitter-square" 
               style="
                     color: rgb(29,161,242);
@@ -1455,7 +1473,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://github.com/rj13-to">
               <i class="fa fa-github" 
               style="
                     color: black;
@@ -1463,7 +1481,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/prabhdeep-singh-b6b837190/">
               <i class="fa fa-linkedin" 
               style="
                     color: rgb(0, 153, 255);
@@ -1484,10 +1502,11 @@
                 margin-bottom: 5px;
                 font-weight: 600;
                 ">
-        ©2021 All Rights Reserved by Book Ocean
+        ©2021 All Rights Reserved by <i class="fas fa-bold" style="font-size:20px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:20px;color:blue">orce</i>
       </h6>
   </div>
 </div>
+
 
 <div id="id01" class="modal">
    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -1518,8 +1537,7 @@
       </div>
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    Don't have account yet <a class="btn btn-primary btn-sm" onclick="document.getElementById('id02').style.display='block'" >Sign Up</a> 
   </div>
   <div class="clearfix">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-danger">Cancel</button>
@@ -1561,7 +1579,11 @@
         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       </div>
   </div>
-  <div class="clearfix">
+  <div>
+    Already have a account <a class="btn btn-primary btn-sm" onclick="document.getElementById('id01').style.display='block'" style="color:white" >Sign IN</a>
+  <br>  <br>
+ </div>
+ <div class="clearfix">
       <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger">Cancel</button>
       <span style="width:200px"></span>
       <button type="submit" class="btn btn-success" >Sign UP</button>

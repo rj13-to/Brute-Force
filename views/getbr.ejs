@@ -133,7 +133,7 @@
             color: rgb(0, 102, 255);
             margin-top: 20px;
             ">
-              Welcome to ask review about books:
+              Welcome to share your idea's about books:
             </h6>
       <h3 style="
             text-align: center;
@@ -142,7 +142,7 @@
             font-family: Arial, Helvetica, sans-serif;
             
             ">
-            Ask for Review
+            Books Reviews
        </h3>  
        <hr style="
           border:none;
@@ -161,7 +161,7 @@
           </div>-->
 
     <div class="container">
-      <form>
+      <form method="POST" action="/getbr">
             <div class="col-auto form-row align-items-center">
 
               <div class="col-md-6 my-1" style="margin-bottom: 20px;padding-right: 20px;">
@@ -170,7 +170,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Book</div>
                   </div>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name of book" required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name of book" required>
                 </div>
               </div>
 
@@ -180,7 +180,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Author</div>
                   </div>
-                  <input type="text" class="form-control" id="author" placeholder="Enter name of author" required >
+                  <input type="text" name="author" class="form-control" id="author" placeholder="Enter name of author" required >
                 </div>
               </div>
 
@@ -191,7 +191,7 @@
                 padding-top: 10px;
                 padding-left: 16px;
                 ">
-                  Note: ISBN is not compulsory but it will help in easy to find your question
+                  Note: ISBN is not compulsory but it will help in easy to access your review
                 </h6>
             <div class="col-auto form-row align-items-center">
 
@@ -201,7 +201,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">ISBN  </div>
                   </div>
-                  <input type="Number" class="form-control" id="isbn" placeholder="Enter ISBN">
+                  <input type="Number" name="isbn" class="form-control" id="isbn" placeholder="Enter ISBN">
                 </div>
               </div>
 
@@ -223,7 +223,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Type</div>
                                 </div>
-                                <select name="country" class="form-control" id="choice1" size="1" required>
+                                <select name="type" class="form-control" id="choice1" size="1" required>
                                         <option value="" selected="selected">Select Type of Book</option>
                                 </select>
                               </div>
@@ -235,7 +235,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Category</div>
                                 </div>
-                                <select name="state" class="form-control" id="choice2" size="1" required>
+                                <select name="category" class="form-control" id="choice2" size="1" required>
                                   <option value="" selected="selected">Please select Type first</option>
                                 </select>
                               </div>
@@ -247,13 +247,15 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Branch</div>
                                 </div>
-                                  <select name="district" class="form-control"  id="choice3" size="1" required>
+                                  <select name="branch" class="form-control"  id="choice3" size="1" required>
                                     <option value="" selected="selected" >Please select Catergory first</option>
                                   </select>
                               </div>
                       </div>
                 </div>
-               
+                
+
+
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Submit</button>
             </div>
