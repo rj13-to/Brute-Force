@@ -82,42 +82,65 @@
 
     <!--nav bar section -->
 
+   
+    <!--nav bar section -->
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light " style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
    
-        <a class="navbar-brand" href="#" style="color: black;"><i class="fas fa-bold" style="font-size:24px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:24px;color:blue">orce</i></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="/logedin" style="color: black;"><i class="fas fa-bold" style="font-size:24px;color:orange">rute</i> <i class="fab fa-foursquare" style="font-size:24px;color:blue">orce</i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-              
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: red;">Wish List <i class="fa fa-heart" style="color:red"></i><span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: grey;">For Sell <span class="sr-only">(current)</span></a>
-            </li>
             
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: grey;">
-                Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Basic</a>
-                <a class="dropdown-item" href="#">Address</a>
-                <a class="dropdown-item" href="#">Phone No</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log Out</a>
-              </div>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: grey;">Notifications <i class="fa fa-bell" ></i><span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: red;">
+              Wish List <i class="fa fa-heart" style="color:red"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/wishlistbooks"><i class="fa fa-book" style="color: red;"></i> Books</a>
+              <a class="dropdown-item" href="/wishliststuff"><i class="fas fa-shopping-basket" style="color: red;"></i> Stuff</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:purple;">
+              Contributions <i class="fa fa-pen" style="color:purple"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="padding-left:5px">
+              <span style="color:rgb(0, 0, 153);font-weight: 500; ">Competitive Exams:</span>
+              <a class="btn btn-primary dropdown-item " href="/contpregra">Pre Graduation</a>
+              <a class="btn btn-primary dropdown-item " href="/contpostgra">Post Graduation</a>
+              <hr>
+              <span style="color:rgb(0, 0, 153);font-weight: 500; ">Interview Experience:</span>
+              <a class="dropdown-item" href="/contcore">Core Interviews</a>
+              <a class="dropdown-item" href="/contnonc">Non-Core Interviews</a>
+              <hr>
+              <span style="color:rgb(0, 0, 153);font-weight: 500; ">Reviews:</span>
+              <a class="dropdown-item" href="#">Coaching Review</a>
+              <a class="dropdown-item" href="#">Books Review</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: blue;">
+              Profile <i class="fa fa-user" style="color:blue"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/profilebooks"><i class="fa fa-book"></i> Books for sell</a>
+              <a class="dropdown-item" href="/profilestuff"><i class="fas fa-shopping-basket"></i> Stuff for sell</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Settings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"></i> Log Out</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#" style="color: grey;">Notifications <i class="fa fa-bell" ></i><span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+          <!-- nav bar ends--> 
             <!-- nav bar ends--> 
  
       <h6 style="
@@ -195,6 +218,7 @@
 
 
 
+
 <div class="footer">
   <div class="upperf">
 
@@ -205,10 +229,10 @@
                       color: rgb(0, 0, 153);
                       font-weight: 500;
                       font-family: Lucida Console, Courier New, monospace;
-                      ">Every News of Book-Ocean</h4>
+                      ">Every News of Brute-Force</h4>
             <h6 style="margin-bottom: 5px;">Subscribe our Newsletter get latest news about us!!!</h6>
 
-             <form>
+             <form method="POST" action="/news">
               <div class="form-row align-items-center">
                 <div class="col-auto">
                   <label class="sr-only" for="inlineFormInputGroup">Email</label>
@@ -216,7 +240,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">@</div>
                     </div>
-                    <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Enter Email" required style="width: 250px;">
+                    <input type="email" name="email" class="form-control" id="inlineFormInputGroup" placeholder="Enter Email" required style="width: 250px;">
                   </div>
                 </div>
   
@@ -271,7 +295,7 @@
         <h5 style="color: rgb(0,0,153);font-weight: 600;">Important Links</h5>
         <ul>
           <li >
-            <a class="links" href="#">Home</a>
+            <a class="links" href="/logedin">Home</a>
           </li>
           <li >
             <a class="links" href="#">About Us </a>
@@ -288,34 +312,7 @@
         </ul>
       </div>
 
-
        <div class="col-xl-2 col-md-4">
-           <h5 style="color: rgb(0,0,153);font-weight: 600;">Basic Links</h5>
-            <ul>
-              <li >
-                  <a class="links" href="#">Login</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Buy Books</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Sell Books</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Add Review</a>
-              </li>
-
-              <li >
-                  <a class="links" href="#">Famous Novel</a>
-              </li>
-            </ul>
-      </div>
-
-
-      <div class="col-xl-2 col-md-4">
         <div class="row">
           <div class="col-xl-12" style="padding-right : 2%">
               <h5 style="color: rgb(0,0,153);font-weight: 600;">Contact Us:</h5>
@@ -323,11 +320,14 @@
               <h6 style="color:rgb(0,0,0)"><strong>Email:</strong><br><span class="special"> prabhdeol313@gmail.com</span></h6>
             </div>
         </div>
-        <br>
+      </div>
+
+
+      <div class="col-xl-2 col-md-4">
         <div class="row">
           <div class="col-xl-12">
             <h6 style="color: rgb(0,0,153);font-weight: 600;padding-bottom: 10px;">Made by: Prabhdeep Singh</h6>
-            <a href="#">
+            <a href="https://www.facebook.com/people/Prabhdeep-Singh/100026293058210/">
               <i class="fa fa-facebook-square" 
               style="
                     color: blue;
@@ -336,7 +336,7 @@
                     margin-right: 3px;
                     "></i></a>
             
-            <a href="#">
+            <a href="https://www.instagram.com/rj13_to/">
               <i class="fa fa-instagram" 
               style="
                     color: red;
@@ -344,7 +344,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://twitter.com/rj13_to">
               <i class="fa fa-twitter-square" 
               style="
                     color: rgb(29,161,242);
@@ -352,7 +352,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://github.com/rj13-to">
               <i class="fa fa-github" 
               style="
                     color: black;
@@ -360,7 +360,7 @@
                     margin-left: 3px;
                     margin-right: 3px;
                     "></i></a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/prabhdeep-singh-b6b837190/">
               <i class="fa fa-linkedin" 
               style="
                     color: rgb(0, 153, 255);
