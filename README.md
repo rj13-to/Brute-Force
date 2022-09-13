@@ -1,2 +1,1 @@
-Book Ocean is a project for the engineering students, it contains section to sell used stationary, books and share/get review about books, interviews, entrance exams and coachings</p>
-        
+Brute Force is a project for engineering students, it contains sections to sell used stationery, books, and share/get reviews about books, interviews, entrance exams, and coachings
